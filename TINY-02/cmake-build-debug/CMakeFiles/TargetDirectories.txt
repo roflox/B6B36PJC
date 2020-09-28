@@ -1,0 +1,4 @@
+/mnt/c/ClionProjects/B6B36PJC/TINY-02/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/mnt/c/ClionProjects/B6B36PJC/TINY-02/cmake-build-debug/CMakeFiles/edit_cache.dir
+/mnt/c/ClionProjects/B6B36PJC/TINY-02/cmake-build-debug/CMakeFiles/test.dir
+/mnt/c/ClionProjects/B6B36PJC/TINY-02/cmake-build-debug/CMakeFiles/tests.dir

@@ -1,0 +1,1 @@
+/usr/bin/c++  -g   CMakeFiles/tests.dir/factorial.cpp.o CMakeFiles/tests.dir/tests-factorial.cpp.o CMakeFiles/tests.dir/tests-main.cpp.o  -o tests 

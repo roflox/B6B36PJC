@@ -1,0 +1,22 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/mnt/c/ClionProjects/B6B36PJC/TINY-00/tiny-00.cpp
+tiny-00.hpp
+/mnt/c/ClionProjects/B6B36PJC/TINY-00/tiny-00.hpp
+ostream
+-
+sstream
+-
+
+/mnt/c/ClionProjects/B6B36PJC/TINY-00/tiny-00.hpp
+iosfwd
+-
+vector
+-
+
