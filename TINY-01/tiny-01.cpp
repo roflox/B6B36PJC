@@ -78,8 +78,11 @@ std::string pluralize(std::string const& word) {
 
 std::vector<std::string> pluralize(std::vector<std::string> const& words) {
     std::vector<std::string> mutableWords ;
-    for (auto word : words) {
+    for (const auto& word : words) {
+//        word = pluralize(word);
+
         mutableWords.insert(mutableWords.end(),pluralize(word));
     }
     return mutableWords;
+//    return words;
 }

@@ -5,6 +5,7 @@
 #include <exception>
 #include <tuple>
 #include <sstream>
+#include <iostream>
 
 std::pair<size_t, int*> parse_line(std::string const& line) {
     std::stringstream sstr(line);
@@ -33,7 +34,8 @@ bool validate_data(int* data, size_t sz) {
 
 std::vector<statistics> summarize_data(std::istream& in) {
     std::vector<statistics> summary;
-    
+
+
     std::string line;
     while (std::getline(in, line)) {
         size_t num_data;
@@ -43,9 +45,8 @@ std::vector<statistics> summarize_data(std::istream& in) {
             std::sort(data, data+num_data);
             auto median = (num_data % 2 == 1)? data[num_data/2] : (data[(num_data - 1) /2] + data[num_data/2]) / 2;
             summary.push_back({num_data, data[0], data[num_data-1], median});
-            delete data;
         }
+        delete[] data;
     }
-    
     return summary;
 }
