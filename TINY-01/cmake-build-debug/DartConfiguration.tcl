@@ -11,7 +11,7 @@ BuildDirectory: /mnt/c/ClionProjects/B6B36PJC/TINY-01/cmake-build-debug
 CostDataFile: 
 
 # Site is something like machine.domain, i.e. pragmatic.crd
-Site: DESKTOP-6VD6UQH
+Site: DESKTOP-V8EVHG8
 
 # Build name is osname-revision-compiler, i.e. Linux-2.4.2-2smp-c++
 BuildName: Linux-c++

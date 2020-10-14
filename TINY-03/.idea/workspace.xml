@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true">
+    <generated>
+      <config projectName="Jednohubka-03" targetName="tests" />
+    </generated>
+  </component>
+  <component name="CMakeSettings">
+    <configurations>
+      <configuration PROFILE_NAME="Debug" CONFIG_NAME="Debug" />
+    </configurations>
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="919bb362-2c2d-4fde-8a82-5539307f51af" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../TINY-01/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeCache.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeCache.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/3.16.3/CMakeCXXCompiler.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/3.16.3/CMakeCXXCompiler.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/3.16.3/CMakeSystem.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/3.16.3/CMakeSystem.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/3.16.3/CompilerIdCXX/CMakeCXXCompilerId.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/3.16.3/CompilerIdCXX/CMakeCXXCompilerId.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/CMakeDirectoryInformation.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/CMakeDirectoryInformation.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/CMakeOutput.log" beforeDir="false" afterPath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/CMakeOutput.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/CMakeRuleHashes.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/CMakeRuleHashes.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/Continuous.dir/DependInfo.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/Continuous.dir/DependInfo.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/Continuous.dir/build.make" beforeDir="false" afterPath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/Continuous.dir/build.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/Continuous.dir/cmake_clean.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/Continuous.dir/cmake_clean.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/Continuous.dir/progress.make" beforeDir="false" afterPath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/Continuous.dir/progress.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/ContinuousBuild.dir/DependInfo.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/ContinuousBuild.dir/DependInfo.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/ContinuousBuild.dir/build.make" beforeDir="false" afterPath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/ContinuousBuild.dir/build.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/ContinuousBuild.dir/cmake_clean.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/ContinuousBuild.dir/cmake_clean.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/ContinuousBuild.dir/progress.make" beforeDir="false" afterPath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/ContinuousBuild.dir/progress.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/ContinuousConfigure.dir/DependInfo.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/ContinuousConfigure.dir/DependInfo.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/ContinuousConfigure.dir/build.make" beforeDir="false" afterPath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/ContinuousConfigure.dir/build.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/ContinuousConfigure.dir/cmake_clean.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/ContinuousConfigure.dir/cmake_clean.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/ContinuousConfigure.dir/progress.make" beforeDir="false" afterPath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/ContinuousConfigure.dir/progress.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/ContinuousCoverage.dir/DependInfo.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/ContinuousCoverage.dir/DependInfo.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/ContinuousCoverage.dir/build.make" beforeDir="false" afterPath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/ContinuousCoverage.dir/build.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/ContinuousCoverage.dir/cmake_clean.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/ContinuousCoverage.dir/cmake_clean.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/ContinuousCoverage.dir/progress.make" beforeDir="false" afterPath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/ContinuousCoverage.dir/progress.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/ContinuousMemCheck.dir/DependInfo.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/ContinuousMemCheck.dir/DependInfo.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/ContinuousMemCheck.dir/build.make" beforeDir="false" afterPath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/ContinuousMemCheck.dir/build.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/ContinuousMemCheck.dir/cmake_clean.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/ContinuousMemCheck.dir/cmake_clean.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/ContinuousMemCheck.dir/progress.make" beforeDir="false" afterPath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/ContinuousMemCheck.dir/progress.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/ContinuousStart.dir/DependInfo.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/ContinuousStart.dir/DependInfo.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/ContinuousStart.dir/build.make" beforeDir="false" afterPath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/ContinuousStart.dir/build.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/ContinuousStart.dir/cmake_clean.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/ContinuousStart.dir/cmake_clean.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/ContinuousStart.dir/progress.make" beforeDir="false" afterPath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/ContinuousStart.dir/progress.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/ContinuousSubmit.dir/DependInfo.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/ContinuousSubmit.dir/DependInfo.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/ContinuousSubmit.dir/build.make" beforeDir="false" afterPath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/ContinuousSubmit.dir/build.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/ContinuousSubmit.dir/cmake_clean.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/ContinuousSubmit.dir/cmake_clean.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/ContinuousSubmit.dir/progress.make" beforeDir="false" afterPath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/ContinuousSubmit.dir/progress.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/ContinuousTest.dir/DependInfo.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/ContinuousTest.dir/DependInfo.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/ContinuousTest.dir/build.make" beforeDir="false" afterPath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/ContinuousTest.dir/build.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/ContinuousTest.dir/cmake_clean.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/ContinuousTest.dir/cmake_clean.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/ContinuousTest.dir/progress.make" beforeDir="false" afterPath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/ContinuousTest.dir/progress.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/ContinuousUpdate.dir/DependInfo.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/ContinuousUpdate.dir/DependInfo.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/ContinuousUpdate.dir/build.make" beforeDir="false" afterPath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/ContinuousUpdate.dir/build.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/ContinuousUpdate.dir/cmake_clean.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/ContinuousUpdate.dir/cmake_clean.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/ContinuousUpdate.dir/progress.make" beforeDir="false" afterPath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/ContinuousUpdate.dir/progress.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/Experimental.dir/DependInfo.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/Experimental.dir/DependInfo.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/Experimental.dir/build.make" beforeDir="false" afterPath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/Experimental.dir/build.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/Experimental.dir/cmake_clean.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/Experimental.dir/cmake_clean.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/Experimental.dir/progress.make" beforeDir="false" afterPath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/Experimental.dir/progress.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/ExperimentalBuild.dir/DependInfo.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/ExperimentalBuild.dir/DependInfo.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/ExperimentalBuild.dir/build.make" beforeDir="false" afterPath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/ExperimentalBuild.dir/build.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/ExperimentalBuild.dir/cmake_clean.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/ExperimentalBuild.dir/cmake_clean.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/ExperimentalBuild.dir/progress.make" beforeDir="false" afterPath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/ExperimentalBuild.dir/progress.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/ExperimentalConfigure.dir/DependInfo.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/ExperimentalConfigure.dir/DependInfo.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/ExperimentalConfigure.dir/build.make" beforeDir="false" afterPath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/ExperimentalConfigure.dir/build.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/ExperimentalConfigure.dir/cmake_clean.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/ExperimentalConfigure.dir/cmake_clean.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/ExperimentalConfigure.dir/progress.make" beforeDir="false" afterPath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/ExperimentalConfigure.dir/progress.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/ExperimentalCoverage.dir/DependInfo.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/ExperimentalCoverage.dir/DependInfo.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/ExperimentalCoverage.dir/build.make" beforeDir="false" afterPath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/ExperimentalCoverage.dir/build.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/ExperimentalCoverage.dir/cmake_clean.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/ExperimentalCoverage.dir/cmake_clean.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/ExperimentalCoverage.dir/progress.make" beforeDir="false" afterPath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/ExperimentalCoverage.dir/progress.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/ExperimentalMemCheck.dir/DependInfo.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/ExperimentalMemCheck.dir/DependInfo.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/ExperimentalMemCheck.dir/build.make" beforeDir="false" afterPath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/ExperimentalMemCheck.dir/build.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/ExperimentalMemCheck.dir/cmake_clean.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/ExperimentalMemCheck.dir/cmake_clean.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/ExperimentalMemCheck.dir/progress.make" beforeDir="false" afterPath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/ExperimentalMemCheck.dir/progress.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/ExperimentalStart.dir/DependInfo.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/ExperimentalStart.dir/DependInfo.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/ExperimentalStart.dir/build.make" beforeDir="false" afterPath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/ExperimentalStart.dir/build.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/ExperimentalStart.dir/cmake_clean.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/ExperimentalStart.dir/cmake_clean.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/ExperimentalStart.dir/progress.make" beforeDir="false" afterPath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/ExperimentalStart.dir/progress.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/ExperimentalSubmit.dir/DependInfo.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/ExperimentalSubmit.dir/DependInfo.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/ExperimentalSubmit.dir/build.make" beforeDir="false" afterPath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/ExperimentalSubmit.dir/build.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/ExperimentalSubmit.dir/cmake_clean.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/ExperimentalSubmit.dir/cmake_clean.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/ExperimentalSubmit.dir/progress.make" beforeDir="false" afterPath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/ExperimentalSubmit.dir/progress.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/ExperimentalTest.dir/DependInfo.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/ExperimentalTest.dir/DependInfo.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/ExperimentalTest.dir/build.make" beforeDir="false" afterPath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/ExperimentalTest.dir/build.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/ExperimentalTest.dir/cmake_clean.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/ExperimentalTest.dir/cmake_clean.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/ExperimentalTest.dir/progress.make" beforeDir="false" afterPath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/ExperimentalTest.dir/progress.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/ExperimentalUpdate.dir/DependInfo.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/ExperimentalUpdate.dir/DependInfo.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/ExperimentalUpdate.dir/build.make" beforeDir="false" afterPath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/ExperimentalUpdate.dir/build.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/ExperimentalUpdate.dir/cmake_clean.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/ExperimentalUpdate.dir/cmake_clean.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/ExperimentalUpdate.dir/progress.make" beforeDir="false" afterPath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/ExperimentalUpdate.dir/progress.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/Makefile.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/Makefile.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/Makefile2" beforeDir="false" afterPath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/Makefile2" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/Nightly.dir/DependInfo.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/Nightly.dir/DependInfo.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/Nightly.dir/build.make" beforeDir="false" afterPath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/Nightly.dir/build.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/Nightly.dir/cmake_clean.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/Nightly.dir/cmake_clean.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/Nightly.dir/progress.make" beforeDir="false" afterPath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/Nightly.dir/progress.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/NightlyBuild.dir/DependInfo.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/NightlyBuild.dir/DependInfo.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/NightlyBuild.dir/build.make" beforeDir="false" afterPath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/NightlyBuild.dir/build.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/NightlyBuild.dir/cmake_clean.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/NightlyBuild.dir/cmake_clean.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/NightlyBuild.dir/progress.make" beforeDir="false" afterPath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/NightlyBuild.dir/progress.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/NightlyConfigure.dir/DependInfo.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/NightlyConfigure.dir/DependInfo.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/NightlyConfigure.dir/build.make" beforeDir="false" afterPath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/NightlyConfigure.dir/build.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/NightlyConfigure.dir/cmake_clean.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/NightlyConfigure.dir/cmake_clean.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/NightlyConfigure.dir/progress.make" beforeDir="false" afterPath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/NightlyConfigure.dir/progress.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/NightlyCoverage.dir/DependInfo.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/NightlyCoverage.dir/DependInfo.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/NightlyCoverage.dir/build.make" beforeDir="false" afterPath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/NightlyCoverage.dir/build.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/NightlyCoverage.dir/cmake_clean.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/NightlyCoverage.dir/cmake_clean.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/NightlyCoverage.dir/progress.make" beforeDir="false" afterPath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/NightlyCoverage.dir/progress.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/NightlyMemCheck.dir/DependInfo.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/NightlyMemCheck.dir/DependInfo.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/NightlyMemCheck.dir/build.make" beforeDir="false" afterPath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/NightlyMemCheck.dir/build.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/NightlyMemCheck.dir/cmake_clean.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/NightlyMemCheck.dir/cmake_clean.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/NightlyMemCheck.dir/progress.make" beforeDir="false" afterPath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/NightlyMemCheck.dir/progress.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/NightlyMemoryCheck.dir/DependInfo.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/NightlyMemoryCheck.dir/DependInfo.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/NightlyMemoryCheck.dir/build.make" beforeDir="false" afterPath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/NightlyMemoryCheck.dir/build.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/NightlyMemoryCheck.dir/cmake_clean.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/NightlyMemoryCheck.dir/cmake_clean.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/NightlyMemoryCheck.dir/progress.make" beforeDir="false" afterPath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/NightlyMemoryCheck.dir/progress.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/NightlyStart.dir/DependInfo.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/NightlyStart.dir/DependInfo.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/NightlyStart.dir/build.make" beforeDir="false" afterPath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/NightlyStart.dir/build.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/NightlyStart.dir/cmake_clean.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/NightlyStart.dir/cmake_clean.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/NightlyStart.dir/progress.make" beforeDir="false" afterPath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/NightlyStart.dir/progress.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/NightlySubmit.dir/DependInfo.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/NightlySubmit.dir/DependInfo.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/NightlySubmit.dir/build.make" beforeDir="false" afterPath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/NightlySubmit.dir/build.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/NightlySubmit.dir/cmake_clean.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/NightlySubmit.dir/cmake_clean.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/NightlySubmit.dir/progress.make" beforeDir="false" afterPath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/NightlySubmit.dir/progress.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/NightlyTest.dir/DependInfo.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/NightlyTest.dir/DependInfo.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/NightlyTest.dir/build.make" beforeDir="false" afterPath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/NightlyTest.dir/build.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/NightlyTest.dir/cmake_clean.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/NightlyTest.dir/cmake_clean.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/NightlyTest.dir/progress.make" beforeDir="false" afterPath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/NightlyTest.dir/progress.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/NightlyUpdate.dir/DependInfo.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/NightlyUpdate.dir/DependInfo.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/NightlyUpdate.dir/build.make" beforeDir="false" afterPath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/NightlyUpdate.dir/build.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/NightlyUpdate.dir/cmake_clean.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/NightlyUpdate.dir/cmake_clean.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/NightlyUpdate.dir/progress.make" beforeDir="false" afterPath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/NightlyUpdate.dir/progress.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/TargetDirectories.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/TargetDirectories.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/clion-environment.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/clion-environment.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/clion-log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/clion-log.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/cmake.check_cache" beforeDir="false" afterPath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/cmake.check_cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/progress.marks" beforeDir="false" afterPath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/progress.marks" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/tests.dir/CXX.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/tests.dir/CXX.includecache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/tests.dir/DependInfo.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/tests.dir/DependInfo.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/tests.dir/build.make" beforeDir="false" afterPath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/tests.dir/build.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/tests.dir/cmake_clean.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/tests.dir/cmake_clean.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/tests.dir/depend.internal" beforeDir="false" afterPath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/tests.dir/depend.internal" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/tests.dir/depend.make" beforeDir="false" afterPath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/tests.dir/depend.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/tests.dir/flags.make" beforeDir="false" afterPath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/tests.dir/flags.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/tests.dir/link.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/tests.dir/link.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/tests.dir/progress.make" beforeDir="false" afterPath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CMakeFiles/tests.dir/progress.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CTestTestfile.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/CTestTestfile.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/DartConfiguration.tcl" beforeDir="false" afterPath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/DartConfiguration.tcl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/Jednohubka-02.cbp" beforeDir="false" afterPath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/Jednohubka-02.cbp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/Makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/cmake_install.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/cmake_install.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/tests" beforeDir="false" afterPath="$PROJECT_DIR$/../TINY-01/cmake-build-debug/tests" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TINY-02/cmake-build-debug/CMakeCache.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../TINY-02/cmake-build-debug/CMakeCache.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TINY-02/cmake-build-debug/CMakeFiles/3.16.3/CMakeCXXCompiler.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/../TINY-02/cmake-build-debug/CMakeFiles/3.16.3/CMakeCXXCompiler.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TINY-02/cmake-build-debug/CMakeFiles/3.16.3/CMakeSystem.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/../TINY-02/cmake-build-debug/CMakeFiles/3.16.3/CMakeSystem.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TINY-02/cmake-build-debug/CMakeFiles/3.16.3/CompilerIdCXX/CMakeCXXCompilerId.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../TINY-02/cmake-build-debug/CMakeFiles/3.16.3/CompilerIdCXX/CMakeCXXCompilerId.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TINY-02/cmake-build-debug/CMakeFiles/CMakeDirectoryInformation.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/../TINY-02/cmake-build-debug/CMakeFiles/CMakeDirectoryInformation.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TINY-02/cmake-build-debug/CMakeFiles/CMakeOutput.log" beforeDir="false" afterPath="$PROJECT_DIR$/../TINY-02/cmake-build-debug/CMakeFiles/CMakeOutput.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TINY-02/cmake-build-debug/CMakeFiles/Makefile.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/../TINY-02/cmake-build-debug/CMakeFiles/Makefile.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TINY-02/cmake-build-debug/CMakeFiles/Makefile2" beforeDir="false" afterPath="$PROJECT_DIR$/../TINY-02/cmake-build-debug/CMakeFiles/Makefile2" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TINY-02/cmake-build-debug/CMakeFiles/TargetDirectories.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../TINY-02/cmake-build-debug/CMakeFiles/TargetDirectories.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TINY-02/cmake-build-debug/CMakeFiles/clion-environment.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../TINY-02/cmake-build-debug/CMakeFiles/clion-environment.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TINY-02/cmake-build-debug/CMakeFiles/clion-log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../TINY-02/cmake-build-debug/CMakeFiles/clion-log.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TINY-02/cmake-build-debug/CMakeFiles/cmake.check_cache" beforeDir="false" afterPath="$PROJECT_DIR$/../TINY-02/cmake-build-debug/CMakeFiles/cmake.check_cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TINY-02/cmake-build-debug/CMakeFiles/progress.marks" beforeDir="false" afterPath="$PROJECT_DIR$/../TINY-02/cmake-build-debug/CMakeFiles/progress.marks" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TINY-02/cmake-build-debug/CMakeFiles/tests.dir/CXX.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/../TINY-02/cmake-build-debug/CMakeFiles/tests.dir/CXX.includecache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TINY-02/cmake-build-debug/CMakeFiles/tests.dir/DependInfo.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/../TINY-02/cmake-build-debug/CMakeFiles/tests.dir/DependInfo.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TINY-02/cmake-build-debug/CMakeFiles/tests.dir/build.make" beforeDir="false" afterPath="$PROJECT_DIR$/../TINY-02/cmake-build-debug/CMakeFiles/tests.dir/build.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TINY-02/cmake-build-debug/CMakeFiles/tests.dir/cmake_clean.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/../TINY-02/cmake-build-debug/CMakeFiles/tests.dir/cmake_clean.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TINY-02/cmake-build-debug/CMakeFiles/tests.dir/depend.internal" beforeDir="false" afterPath="$PROJECT_DIR$/../TINY-02/cmake-build-debug/CMakeFiles/tests.dir/depend.internal" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TINY-02/cmake-build-debug/CMakeFiles/tests.dir/depend.make" beforeDir="false" afterPath="$PROJECT_DIR$/../TINY-02/cmake-build-debug/CMakeFiles/tests.dir/depend.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TINY-02/cmake-build-debug/CMakeFiles/tests.dir/flags.make" beforeDir="false" afterPath="$PROJECT_DIR$/../TINY-02/cmake-build-debug/CMakeFiles/tests.dir/flags.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TINY-02/cmake-build-debug/CMakeFiles/tests.dir/link.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../TINY-02/cmake-build-debug/CMakeFiles/tests.dir/link.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TINY-02/cmake-build-debug/CMakeFiles/tests.dir/progress.make" beforeDir="false" afterPath="$PROJECT_DIR$/../TINY-02/cmake-build-debug/CMakeFiles/tests.dir/progress.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TINY-02/cmake-build-debug/CTestTestfile.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/../TINY-02/cmake-build-debug/CTestTestfile.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TINY-02/cmake-build-debug/Jednohubka-03.cbp" beforeDir="false" afterPath="$PROJECT_DIR$/../TINY-02/cmake-build-debug/Jednohubka-03.cbp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TINY-02/cmake-build-debug/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/../TINY-02/cmake-build-debug/Makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TINY-02/cmake-build-debug/cmake_install.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/../TINY-02/cmake-build-debug/cmake_install.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TINY-02/cmake-build-debug/tests" beforeDir="false" afterPath="$PROJECT_DIR$/../TINY-02/cmake-build-debug/tests" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ClangdSettings">
+    <option name="formatViaClangd" value="false" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectId" id="1irOMAqGHLn6ir3rPFQy3Sj9kdY" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="true" />
+    <property name="cf.first.check.clang-format" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../TINY-04" />
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" PASS_PARENT_ENVS_2="true">
+      <method v="2">
+        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="tests" type="CMakeCatchTestRunConfigurationType" factoryName="Catch Test" REDIRECT_INPUT="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Jednohubka-03" TARGET_NAME="tests" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Jednohubka-03" RUN_TARGET_NAME="tests" TEST_MODE="SUITE_TEST">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+        <option name="BeforeTestRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="GradleAppRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" PASS_PARENT_ENVS_2="true">
+      <method v="2">
+        <option name="com.jetbrains.cidr.cpp.gradle.execution.GradleNativeBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="919bb362-2c2d-4fde-8a82-5539307f51af" name="Default Changelist" comment="" />
+      <created>1602662194031</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1602662194031</updated>
+      <workItem from="1602662195101" duration="514000" />
+      <workItem from="1602662805362" duration="4328000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="734" y="175" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1602665923723">
+      <screen x="0" y="0" width="2560" height="1040" />
+    </state>
+    <state x="734" y="175" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.2560.1040@0.0.2560.1040" timestamp="1602665923723" />
+    <state x="1060" y="275" key="FileChooserDialogImpl" timestamp="1602668077676">
+      <screen x="0" y="0" width="2560" height="1040" />
+    </state>
+    <state x="1060" y="275" key="FileChooserDialogImpl/0.0.2560.1040@0.0.2560.1040" timestamp="1602668077676" />
+    <state width="2517" height="102" key="GridCell.Tab.0.bottom" timestamp="1602668078754">
+      <screen x="0" y="0" width="2560" height="1040" />
+    </state>
+    <state width="2517" height="102" key="GridCell.Tab.0.bottom/0.0.2560.1040@0.0.2560.1040" timestamp="1602668078754" />
+    <state width="2517" height="102" key="GridCell.Tab.0.center" timestamp="1602668078753">
+      <screen x="0" y="0" width="2560" height="1040" />
+    </state>
+    <state width="2517" height="102" key="GridCell.Tab.0.center/0.0.2560.1040@0.0.2560.1040" timestamp="1602668078753" />
+    <state width="2517" height="102" key="GridCell.Tab.0.left" timestamp="1602668078753">
+      <screen x="0" y="0" width="2560" height="1040" />
+    </state>
+    <state width="2517" height="102" key="GridCell.Tab.0.left/0.0.2560.1040@0.0.2560.1040" timestamp="1602668078753" />
+    <state width="2517" height="102" key="GridCell.Tab.0.right" timestamp="1602668078754">
+      <screen x="0" y="0" width="2560" height="1040" />
+    </state>
+    <state width="2517" height="102" key="GridCell.Tab.0.right/0.0.2560.1040@0.0.2560.1040" timestamp="1602668078754" />
+  </component>
+</project>
