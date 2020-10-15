@@ -19,24 +19,25 @@ bool trie::insert(const std::string &str) {
         m_root = new trie_node();
     }
     trie_node *current = m_root;
-    for (auto i = 0; i < str.length(); i++) {
-        int childIndex = int(str[i]);
-        trie_node *tmpChild = current->children[childIndex];
-        if (!tmpChild) {
-            tmpChild = new trie_node();
-            tmpChild->payload = str[i];
-            tmpChild->parent = current;
-            current->children[childIndex] = tmpChild;
+    const char *sptr = str.c_str();
+
+    while (*sptr) {
+        auto childp = &(current->children[int(*sptr)]);
+        if (!*childp) {
+            *childp = new trie_node();
+            (*childp)->parent = current;
+            (*childp)->payload = *sptr;
         }
-        if (i == str.length() - 1) {
-            if(current->children[childIndex]->is_terminal){
+        if(!*(sptr+1)){
+            if((*childp)->is_terminal){
                 return false;
-            } else{
-                current->children[int(str[i])]->is_terminal = true;
-                this->m_size++;
             }
+            (*childp)->is_terminal = true;
+            m_size++;
+            return true;
         }
-        current = tmpChild;
+        current = *childp;
+        sptr++;
     }
     return true;
 }
@@ -67,21 +68,19 @@ bool trie::empty() const {
 }
 
 bool trie::contains(const std::string &str) const {
-    if(m_size==0 || str.size()==0){
-        return false;
-    }
-    trie_node* tmpNode = m_root;
-    for (auto i = 0; i < str.length(); i++) {
-        int childIndex = int(str[i]);
-        if(tmpNode->children[childIndex]){
-            if(i==str.length()-1&&tmpNode->children[childIndex]->is_terminal){
-                return true;
-            } else{
-                tmpNode = tmpNode->children[childIndex];
-            }
-        } else{
+    const char *sptr = str.c_str();
+    trie_node *current = m_root;
+    while (*sptr) {
+        auto childp = &(current->children[int(*sptr)]);
+        if (!*childp) {
             break;
+        } else {
+            if(!*(sptr+1)&&(*childp)->is_terminal){
+                return true;
+            }
+            current = *childp;
         }
+        sptr++;
     }
     return false;
 }
