@@ -4,6 +4,8 @@
 #include <algorithm>
 #include <cassert>
 
+trie_node** currentNodePointer;
+
 trie::trie(const std::vector<std::string> &strings) {
     for (const auto &word: strings) {
         insert(word);
@@ -11,32 +13,58 @@ trie::trie(const std::vector<std::string> &strings) {
 }
 
 bool trie::erase(const std::string &str) {
-    return true;
+    //nasetovaní
+    if(!currentNodePointer){
+        currentNodePointer = &m_root;
+    }
+    auto correspondingChild = (*currentNodePointer)->children[int(str[0])];
+    //když to nikam nevede
+    if(!correspondingChild&&str.length()!=0) {
+        currentNodePointer = nullptr;
+        return false;
+    } else {
+        //kdyz mi dosel string
+        if(str.length()==0){
+            if(!(*currentNodePointer)->is_terminal){
+                currentNodePointer = nullptr;
+                return false;
+            } else {
+                (*currentNodePointer)->is_terminal = false;
+                m_size--;
+                currentNodePointer = nullptr;
+                return true;
+            }
+        } else {
+            currentNodePointer = &correspondingChild;
+            return erase(str.substr(1,str.length()-1));
+        }
+    }
 }
+
 
 bool trie::insert(const std::string &str) {
     if (!this->m_root) {
         m_root = new trie_node();
     }
-    trie_node *current = m_root;
+    trie_node *currentNode = m_root;
     const char *sptr = str.c_str();
 
     while (*sptr) {
-        auto childp = &(current->children[int(*sptr)]);
-        if (!*childp) {
-            *childp = new trie_node();
-            (*childp)->parent = current;
-            (*childp)->payload = *sptr;
+        auto childPointer = &(currentNode->children[int(*sptr)]);
+        if (!*childPointer) {
+            *childPointer = new trie_node();
+            (*childPointer)->parent = currentNode;
+            (*childPointer)->payload = *sptr;
         }
-        if(!*(sptr+1)){
-            if((*childp)->is_terminal){
+        if (!*(sptr + 1)) {
+            if ((*childPointer)->is_terminal) {
                 return false;
             }
-            (*childp)->is_terminal = true;
+            (*childPointer)->is_terminal = true;
             m_size++;
             return true;
         }
-        current = *childp;
+        currentNode = *childPointer;
         sptr++;
     }
     return true;
@@ -75,7 +103,7 @@ bool trie::contains(const std::string &str) const {
         if (!*childp) {
             break;
         } else {
-            if(!*(sptr+1)&&(*childp)->is_terminal){
+            if (!*(sptr + 1) && (*childp)->is_terminal) {
                 return true;
             }
             current = *childp;
