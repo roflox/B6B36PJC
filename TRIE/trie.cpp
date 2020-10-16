@@ -14,7 +14,15 @@ trie::trie(const std::vector<std::string> &strings) {
 
 bool trie::erase(const std::string &str) {
     //nasetovaní
-    if(!currentNodePointer){
+    if(!currentNodePointer&&str.length()==0){
+        if(m_root->is_terminal){
+            m_size--;
+            m_root->is_terminal= false;
+            return true;
+        } else{
+            return false;
+        }
+    }else if(!currentNodePointer){
         currentNodePointer = &m_root;
     }
     auto correspondingChild = (*currentNodePointer)->children[int(str[0])];
@@ -48,7 +56,13 @@ bool trie::insert(const std::string &str) {
     }
     trie_node *currentNode = m_root;
     const char *sptr = str.c_str();
-
+    if(str.length()==0){
+        if(m_root->is_terminal){
+            return false;
+        }
+        m_root->is_terminal= true;
+        m_size++;
+    }
     while (*sptr) {
         auto childPointer = &(currentNode->children[int(*sptr)]);
         if (!*childPointer) {
@@ -97,6 +111,9 @@ bool trie::empty() const {
 
 bool trie::contains(const std::string &str) const {
     const char *sptr = str.c_str();
+    if(str.length()==0&&m_root->is_terminal){
+        return true;
+    }
     trie_node *current = m_root;
     while (*sptr) {
         auto childp = &(current->children[int(*sptr)]);
