@@ -3,6 +3,7 @@
 #include <utility>
 #include <algorithm>
 #include <cassert>
+#include <stack>
 
 trie_node** currentNodePointer;
 
@@ -94,7 +95,20 @@ trie::trie(const trie &rhs) {
 }
 
 trie::~trie() {
-
+    if(m_root){
+        std::stack<trie_node *> nodes;
+        nodes.push(m_root);
+        while (!nodes.empty()){
+            auto currentNode = nodes.top();
+            nodes.pop();
+            for(auto child : currentNode->children){
+                if(child){
+                    nodes.push(child);
+                }
+            }
+            delete currentNode;
+        }
+    }
 }
 
 trie::trie(trie &&rhs) {
