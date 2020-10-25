@@ -5,7 +5,8 @@
 #include <cassert>
 #include <stack>
 
-trie_node** currentNodePointer;
+trie_node *currentNodePointer;
+
 
 trie::trie(const std::vector<std::string> &strings) {
     for (const auto &word: strings) {
@@ -15,37 +16,59 @@ trie::trie(const std::vector<std::string> &strings) {
 
 bool trie::erase(const std::string &str) {
     //nasetovaní
-    if(!currentNodePointer&&str.length()==0){
-        if(m_root->is_terminal){
+    if (!currentNodePointer && str.length() == 0) {
+        if (m_root->is_terminal) {
             m_size--;
-            m_root->is_terminal= false;
+            m_root->is_terminal = false;
             return true;
-        } else{
+        } else {
             return false;
         }
-    }else if(!currentNodePointer){
-        currentNodePointer = &m_root;
+    } else if (!currentNodePointer) {
+        currentNodePointer = m_root;
     }
-    auto correspondingChild = (*currentNodePointer)->children[int(str[0])];
+    auto correspondingChild = (currentNodePointer)->children[int(str[0])];
     //když to nikam nevede
-    if(!correspondingChild&&str.length()!=0) {
+    if (!correspondingChild && str.length() != 0) {
         currentNodePointer = nullptr;
         return false;
     } else {
         //kdyz mi dosel string
-        if(str.length()==0){
-            if(!(*currentNodePointer)->is_terminal){
+        if (str.length() == 0) {
+            if (!(currentNodePointer)->is_terminal) {
                 currentNodePointer = nullptr;
                 return false;
             } else {
-                (*currentNodePointer)->is_terminal = false;
                 m_size--;
+                (currentNodePointer)->is_terminal = false;
+                bool doLoop = (currentNodePointer)->is_terminal;
+                bool hasChildren;
+                trie_node *parent;
+                while (!doLoop) {
+                    hasChildren = false;
+                    int index = int(currentNodePointer->payload);
+                    for (auto child: (currentNodePointer)->children) {
+                        if (child != nullptr) {
+                            hasChildren = true;
+                            break;
+                        }
+                    }
+                    if(!hasChildren&&currentNodePointer!=m_root){
+                        parent = (currentNodePointer)->parent;
+                        delete currentNodePointer;
+                        parent->children[index] = nullptr;
+                        currentNodePointer = parent;
+                        doLoop = (currentNodePointer)->is_terminal;
+                    } else {
+                        doLoop = true;
+                    }
+                }
                 currentNodePointer = nullptr;
                 return true;
             }
         } else {
-            currentNodePointer = &correspondingChild;
-            return erase(str.substr(1,str.length()-1));
+            currentNodePointer = correspondingChild;
+            return erase(str.substr(1, str.length() - 1));
         }
     }
 }
@@ -57,11 +80,11 @@ bool trie::insert(const std::string &str) {
     }
     trie_node *currentNode = m_root;
     const char *sptr = str.c_str();
-    if(str.length()==0){
-        if(m_root->is_terminal){
+    if (str.length() == 0) {
+        if (m_root->is_terminal) {
             return false;
         }
-        m_root->is_terminal= true;
+        m_root->is_terminal = true;
         m_size++;
     }
     while (*sptr) {
@@ -90,19 +113,20 @@ trie::trie() {
     m_size = 0;
 }
 
-trie::trie(const trie &rhs) {
+trie::trie(
+        const trie &rhs) {
 
 }
 
 trie::~trie() {
-    if(m_root){
+    if (m_root) {
         std::stack<trie_node *> nodes;
         nodes.push(m_root);
-        while (!nodes.empty()){
+        while (!nodes.empty()) {
             auto currentNode = nodes.top();
             nodes.pop();
-            for(auto child : currentNode->children){
-                if(child){
+            for (auto child : currentNode->children) {
+                if (child) {
                     nodes.push(child);
                 }
             }
@@ -125,7 +149,7 @@ bool trie::empty() const {
 
 bool trie::contains(const std::string &str) const {
     const char *sptr = str.c_str();
-    if(str.length()==0&&m_root->is_terminal){
+    if (str.length() == 0 && m_root->is_terminal) {
         return true;
     }
     trie_node *current = m_root;

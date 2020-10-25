@@ -45,7 +45,7 @@ public:
     };
 
     /**
-     * Vytvoří trii obsahující všechny řetězce z daného vektoru
+     * Vytvoří trii obsahující všechny řetězce z daného vektoru\
      */
     explicit trie(const std::vector<std::string> &strings);
 

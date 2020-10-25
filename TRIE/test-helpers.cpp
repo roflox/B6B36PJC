@@ -50,6 +50,9 @@ std::ostream& operator<<(std::ostream &os, trie::const_iterator const &i) {
     return os << "trie::const_iterator {" << i.current_node << "}";
 }
 
+
+
+
 #if defined(_WIN32) || defined(_WIN64)
 #include <windows.h>
 void throw_windows_error(std::string msg)
