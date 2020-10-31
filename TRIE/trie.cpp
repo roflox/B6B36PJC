@@ -225,19 +225,26 @@ trie::const_iterator trie::const_iterator::operator++(int) {
 }
 
 trie::const_iterator::reference trie::const_iterator::operator*() const {
-    return trie::const_iterator::reference();
+    vector<char> chars;
+    auto tmpNode = current_node;
+    string ret;
+    while (tmpNode->parent != nullptr) {
+        ret.insert(ret.begin(), tmpNode->payload);
+        tmpNode= tmpNode->parent;
+    }
+    return ret;
 }
 
 bool trie::const_iterator::operator==(const trie::const_iterator &rhs) const {
     if (this->current_node == nullptr) {
         return true;
     }
-    if (&(rhs.current_node) == nullptr){
+    if (&(rhs.current_node) == nullptr) {
         return true;
     }
-    return this->current_node==rhs.current_node;
+    return this->current_node == rhs.current_node;
 }
 
 bool trie::const_iterator::operator!=(const trie::const_iterator &rhs) const {
-    return false;
+    return this->current_node != rhs.current_node;
 }
