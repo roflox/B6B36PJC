@@ -6,6 +6,7 @@
 #include <stack>
 
 trie_node *currentNodePointer;
+using namespace std;
 
 
 trie::trie(const std::vector<std::string> &strings) {
@@ -53,7 +54,7 @@ bool trie::erase(const std::string &str) {
                             break;
                         }
                     }
-                    if(!hasChildren&&currentNodePointer!=m_root){
+                    if (!hasChildren && currentNodePointer != m_root) {
                         parent = (currentNodePointer)->parent;
                         delete currentNodePointer;
                         parent->children[index] = nullptr;
@@ -165,5 +166,78 @@ bool trie::contains(const std::string &str) const {
         }
         sptr++;
     }
+    return false;
+}
+
+trie::const_iterator trie::begin() const {
+    if (m_size == 0) {
+        return trie::const_iterator();
+    }
+    currentNodePointer = m_root;
+    while (true) {
+        if (currentNodePointer->is_terminal) {
+            auto tmpNode = currentNodePointer;
+            currentNodePointer = nullptr;
+            return trie::const_iterator(tmpNode);
+        }
+        for (auto child: currentNodePointer->children) {
+            if (child != nullptr) {
+                currentNodePointer = child;
+                break;
+            }
+        }
+    }
+}
+
+trie::const_iterator trie::end() const {
+    if (m_size == 0) {
+        return trie::const_iterator();
+    }
+    currentNodePointer = m_root;
+    while (true) {
+        auto hasChildren = false;
+        for (int i = num_chars; i-- > 0;) {
+
+            auto child = currentNodePointer->children[i];
+            if (child != nullptr) {
+                currentNodePointer = child;
+                hasChildren = true;
+                break;
+            }
+        }
+        if (!hasChildren) {
+            auto tmpNode = currentNodePointer;
+            currentNodePointer = nullptr;
+            return trie::const_iterator(tmpNode);
+        }
+    }
+}
+
+trie::const_iterator::const_iterator(const trie_node *node) {
+    this->current_node = node;
+}
+
+trie::const_iterator &trie::const_iterator::operator++() {
+
+}
+
+trie::const_iterator trie::const_iterator::operator++(int) {
+}
+
+trie::const_iterator::reference trie::const_iterator::operator*() const {
+    return trie::const_iterator::reference();
+}
+
+bool trie::const_iterator::operator==(const trie::const_iterator &rhs) const {
+    if (this->current_node == nullptr) {
+        return true;
+    }
+    if (&(rhs.current_node) == nullptr){
+        return true;
+    }
+    return this->current_node==rhs.current_node;
+}
+
+bool trie::const_iterator::operator!=(const trie::const_iterator &rhs) const {
     return false;
 }
