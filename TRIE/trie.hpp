@@ -23,6 +23,7 @@ public:
         friend std::ostream &operator<<(std::ostream &os, trie::const_iterator const &i);
 
     public:
+        //co ty hodnoty znamenají? do ankety
         using iterator_category = std::forward_iterator_tag;
         using value_type = std::string;
         using reference = std::string;
@@ -39,6 +40,7 @@ public:
 
         reference operator*() const;
 
+        //vysvětlit co to má dělat
         bool operator==(const const_iterator &rhs) const;
 
         bool operator!=(const const_iterator &rhs) const;

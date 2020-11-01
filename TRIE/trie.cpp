@@ -9,7 +9,6 @@ trie_node *currentNodePointer;
 using namespace std;
 
 
-
 trie::trie(const std::vector<std::string> &strings) {
     for (const auto &word: strings) {
         insert(word);
@@ -192,33 +191,14 @@ trie::const_iterator trie::begin() const {
 }
 
 trie::const_iterator trie::end() const {
-    if (m_size == 0) {
-        return trie::const_iterator();
-    }
-    currentNodePointer = m_root;
-    while (true) {
-        auto hasChildren = false;
-        for (int i = num_chars; i-- > 0;) {
-
-            auto child = currentNodePointer->children[i];
-            if (child != nullptr) {
-                currentNodePointer = child;
-                hasChildren = true;
-                break;
-            }
-        }
-        if (!hasChildren) {
-            auto tmpNode = currentNodePointer;
-            currentNodePointer = nullptr;
-            return trie::const_iterator(tmpNode);
-        }
-    }
+    return nullptr;
 }
 
 trie::const_iterator::const_iterator(const trie_node *node) {
     this->current_node = node;
 }
 
+//prefix
 trie::const_iterator &trie::const_iterator::operator++() {
     bool goDown = true;
     bool goUp = false;
@@ -240,6 +220,12 @@ trie::const_iterator &trie::const_iterator::operator++() {
             goUp = true;
         }
         while (goUp) {
+            if(current_node->parent == nullptr){
+                goUp = false;
+                goDown = false;
+                current_node = nullptr;
+                break;
+            }
             for (int i = int(current_node->payload); i++ < 127;) {
                 auto child = current_node->parent->children[i];
                 if (child != nullptr) {
@@ -256,10 +242,14 @@ trie::const_iterator &trie::const_iterator::operator++() {
             }
         }
     }
+    return *this;
 }
 
+//postfix
 trie::const_iterator trie::const_iterator::operator++(int) {
-
+    trie::const_iterator tmp = *this;
+    ++(*this);
+    return tmp;
 }
 
 trie::const_iterator::reference trie::const_iterator::operator*() const {
@@ -274,15 +264,9 @@ trie::const_iterator::reference trie::const_iterator::operator*() const {
 }
 
 bool trie::const_iterator::operator==(const trie::const_iterator &rhs) const {
-    if (this->current_node == nullptr) {
-        return true;
-    }
-    if (&(rhs.current_node) == nullptr) {
-        return true;
-    }
-    return this->current_node == rhs.current_node;
+    return current_node == rhs.current_node;
 }
 
 bool trie::const_iterator::operator!=(const trie::const_iterator &rhs) const {
-    return this->current_node != rhs.current_node;
+    return current_node != rhs.current_node;
 }

@@ -52,6 +52,7 @@ TEST_CASE("Iterator", "[stage2]") {
         REQUIRE(*at == "zyzyzyzyzyz");
         ++at;
         REQUIRE(*at == "zzzzzz");
+        ++at;
     }
     SECTION("Prefix increment") {
         REQUIRE(it != et);
