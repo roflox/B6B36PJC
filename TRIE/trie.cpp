@@ -110,14 +110,25 @@ bool trie::insert(const std::string &str) {
     return true;
 }
 
+trie::trie(const trie &rhs) {
+    m_root = new trie_node();
+    vector<string> words = {rhs.begin(), rhs.end()};
+    for (const string &word : words) {
+        insert(word);
+    }
+}
+
+trie::trie(trie &&rhs) {
+    m_root = new trie_node();
+    vector<string> words = {rhs.begin(), rhs.end()};
+    for (const string &word : words) {
+        insert(word);
+    }
+}
+
 trie::trie() {
     m_root = new trie_node();
     m_size = 0;
-}
-
-trie::trie(
-        const trie &rhs) {
-
 }
 
 trie::~trie() {
@@ -135,10 +146,6 @@ trie::~trie() {
             delete currentNode;
         }
     }
-}
-
-trie::trie(trie &&rhs) {
-
 }
 
 size_t trie::size() const {
@@ -194,6 +201,63 @@ trie::const_iterator trie::end() const {
     return nullptr;
 }
 
+trie &trie::operator=(const trie &rhs) {
+    if (this->m_root != rhs.m_root) {
+        this->~trie();
+        this->m_root = new trie_node;
+        this->m_size = 0;
+        vector<string> words = {rhs.begin(), rhs.end()};
+        for (const string &word : words) {
+            insert(word);
+        }
+    }
+    return *this;
+}
+
+trie &trie::operator=(trie &&rhs) {
+    if (this->m_root != rhs.m_root) {
+        this->~trie();
+        this->m_root = new trie_node;
+        this->m_size = 0;
+        vector<string> words = {rhs.begin(), rhs.end()};
+        for (const string &word : words) {
+            insert(word);
+        }
+    }
+    return *this;
+}
+
+void trie::swap(trie &rhs) {
+    auto tmpNode = m_root;
+    auto tmpSize = m_size;
+    m_root = rhs.m_root;
+    m_size = rhs.m_size;
+    rhs.m_root = tmpNode;
+    rhs.m_size = tmpSize;
+}
+
+bool trie::operator==(const trie &rhs) const {
+    vector<string> wordsT1 = {this->begin(), this->end()};
+    vector<string> wordsT2 = {rhs.begin(), rhs.end()};
+    return wordsT1 == wordsT2;
+}
+
+bool trie::operator<(const trie &rhs) const {
+    vector<string> wordsT1 = {this->begin(), this->end()};
+    vector<string> wordsT2 = {rhs.begin(), rhs.end()};
+    return !(wordsT1 == wordsT2) && lexicographical_compare(wordsT1.begin(), wordsT1.end(), wordsT2.begin(), wordsT2.end());
+}
+
+//todo
+trie trie::operator&(const trie &rhs) const {
+    return trie();
+}
+
+//todo
+trie trie::operator|(const trie &rhs) const {
+    return trie();
+}
+
 trie::const_iterator::const_iterator(const trie_node *node) {
     this->current_node = node;
 }
@@ -220,7 +284,7 @@ trie::const_iterator &trie::const_iterator::operator++() {
             goUp = true;
         }
         while (goUp) {
-            if(current_node->parent == nullptr){
+            if (current_node->parent == nullptr) {
                 goUp = false;
                 goDown = false;
                 current_node = nullptr;
@@ -237,7 +301,7 @@ trie::const_iterator &trie::const_iterator::operator++() {
                     break;
                 }
             }
-            if(goUp){
+            if (goUp) {
                 current_node = current_node->parent;
             }
         }
@@ -270,3 +334,48 @@ bool trie::const_iterator::operator==(const trie::const_iterator &rhs) const {
 bool trie::const_iterator::operator!=(const trie::const_iterator &rhs) const {
     return current_node != rhs.current_node;
 }
+
+
+//todo
+//! 2 trie jsou si nerovné právě tehdy, když si nejsou rovné (viz operator==)
+bool operator!=(const trie &lhs, const trie &rhs) {
+    return !(lhs == rhs);
+};
+
+//! Lexicografické uspořádání, viz operator<
+bool operator<=(const trie &lhs, const trie &rhs) {
+    return !(rhs < lhs);
+};
+
+//! Lexicografické uspořádání, viz operator<
+bool operator>(const trie &lhs, const trie &rhs) {
+    return rhs < lhs;
+};
+
+//! Lexicografické uspořádání, viz operator<
+bool operator>=(const trie &lhs, const trie &rhs) {
+    return !(lhs < rhs);
+};
+
+
+/**
+ * ADL customization point pro std::swap.
+ * Výsledek `swap(lhs, rhs);` by měl být ekvivalentní s výsledkem
+ * `lhs.swap(rhs);`
+ */
+void swap(trie &lhs, trie &rhs) {
+    lhs.swap(rhs);
+}
+
+
+/**
+ * Operátor výpisu do proudu.
+ *
+ * Tuto funkci netestujeme, ale pokud ji vhodně implementujete, budete mít
+ * ve výstupech z testů užitěčně vypsaný obsah trie.
+ */
+std::ostream &operator<<(std::ostream &out, trie const &trie) {
+    for (trie::const_iterator it = trie.begin(); it != trie.end(); it++)
+        out << *it << '\n';
+    return out;
+};

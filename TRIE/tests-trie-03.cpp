@@ -17,6 +17,20 @@
     funkcionalitu.
 */
 
+TEST_CASE("Copy01", "[stage3]") {
+    SECTION("Copy01 constructor") {
+        SECTION("Verify that deep copy is performed") {
+            trie t1({"a", "aa", "ab", "ad", "cd", "c", "q"});
+            trie t2(t1);
+            SECTION("Add to old trie") {
+                t1.insert("xXxXx");
+                VALIDATE_SETS(extract_all(t1), as_vec({"a", "aa", "ab", "ad", "cd", "c", "q", "xXxXx"}));
+                VALIDATE_SETS(extract_all(t2), as_vec({"a", "aa", "ab", "ad", "cd", "c", "q"}));
+            }
+        }
+    }
+}
+
 
 TEST_CASE("Copy", "[stage3]") {
     SECTION("Copy constructor") {
