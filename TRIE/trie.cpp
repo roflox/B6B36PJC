@@ -5,6 +5,7 @@
 #include <cassert>
 #include <stack>
 #include <set>
+#include <iostream>
 
 trie_node *currentNodePointer;
 using namespace std;
@@ -411,7 +412,8 @@ void swap(trie &lhs, trie &rhs) {
  * ve výstupech z testů užitěčně vypsaný obsah trie.
  */
 std::ostream &operator<<(std::ostream &out, trie const &trie) {
-    for (auto &&it : trie)
-        out << it << '\n';
+    for(auto it = trie.begin(); it != trie.end(); ++it){
+        out<<*it<<endl;
+    }
     return out;
 };
