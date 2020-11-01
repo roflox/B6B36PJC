@@ -4,6 +4,7 @@
 #include <algorithm>
 #include <cassert>
 #include <stack>
+#include <set>
 
 trie_node *currentNodePointer;
 using namespace std;
@@ -245,17 +246,52 @@ bool trie::operator==(const trie &rhs) const {
 bool trie::operator<(const trie &rhs) const {
     vector<string> wordsT1 = {this->begin(), this->end()};
     vector<string> wordsT2 = {rhs.begin(), rhs.end()};
-    return !(wordsT1 == wordsT2) && lexicographical_compare(wordsT1.begin(), wordsT1.end(), wordsT2.begin(), wordsT2.end());
+    return !(wordsT1 == wordsT2) &&
+           lexicographical_compare(wordsT1.begin(), wordsT1.end(), wordsT2.begin(), wordsT2.end());
 }
 
 //todo
 trie trie::operator&(const trie &rhs) const {
-    return trie();
+    vector<string> words = {rhs.begin(), rhs.end()};
+    vector<string> intersectingWords;
+    for (auto word:words) {
+        if (contains(word)) {
+            intersectingWords.push_back(word);
+        }
+    }
+    trie tmpTrie = trie(intersectingWords);
+    return tmpTrie;
 }
 
 //todo
 trie trie::operator|(const trie &rhs) const {
-    return trie();
+    vector<string> words = {rhs.begin(), rhs.end()};
+    vector<string> words2 = {this->begin(), this->end()};
+    words.insert(words.end(), make_move_iterator(words2.begin()), make_move_iterator(words2.end()));
+    trie tmpTrie = trie(words);
+    return tmpTrie;
+}
+
+std::vector<std::string> trie::search_by_prefix(const string &prefix) const {
+    vector<string> words = {this->begin(), this->end()};
+    vector<string> ret;
+    for (const auto &word: words) {
+        if (word.substr(0, prefix.length()) == prefix) {
+            ret.push_back(word);
+        }
+    }
+    return ret;
+}
+
+std::vector<std::string> trie::get_prefixes(const string &str) const {
+    vector<string> words = {this->begin(), this->end()};
+    vector<string> ret;
+    for (auto const word:words) {
+        if (!str.find(word)) {
+            ret.push_back(word);
+        }
+    }
+    return ret;
 }
 
 trie::const_iterator::const_iterator(const trie_node *node) {
@@ -375,7 +411,7 @@ void swap(trie &lhs, trie &rhs) {
  * ve výstupech z testů užitěčně vypsaný obsah trie.
  */
 std::ostream &operator<<(std::ostream &out, trie const &trie) {
-    for (trie::const_iterator it = trie.begin(); it != trie.end(); it++)
-        out << *it << '\n';
+    for (auto &&it : trie)
+        out << it << '\n';
     return out;
 };
