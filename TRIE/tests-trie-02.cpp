@@ -32,6 +32,27 @@ TEST_CASE("Iterator", "[stage2]") {
         trie::const_iterator iter;
         REQUIRE(iter == et);
     }
+    SECTION("Iterator increment functionality, complex"){
+        trie test({ "abc", "bcd", "cde", "edf", "abcd", "abcdg", "hfdg","zzzzzz", "zyzyzyzyzyz" });
+        auto at = test.begin();
+        REQUIRE(*at == "abc");
+        ++at;
+        REQUIRE(*at == "abcd");
+        ++at;
+        REQUIRE(*at == "abcdg");
+        ++at;
+        REQUIRE(*at == "bcd");
+        ++at;
+        REQUIRE(*at == "cde");
+        ++at;
+        REQUIRE(*at == "edf");
+        ++at;
+        REQUIRE(*at == "hfdg");
+        ++at;
+        REQUIRE(*at == "zyzyzyzyzyz");
+        ++at;
+        REQUIRE(*at == "zzzzzz");
+    }
     SECTION("Prefix increment") {
         REQUIRE(it != et);
         REQUIRE(*it == "abc");

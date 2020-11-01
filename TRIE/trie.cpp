@@ -9,6 +9,7 @@ trie_node *currentNodePointer;
 using namespace std;
 
 
+
 trie::trie(const std::vector<std::string> &strings) {
     for (const auto &word: strings) {
         insert(word);
@@ -45,6 +46,7 @@ bool trie::erase(const std::string &str) {
                 bool doLoop = (currentNodePointer)->is_terminal;
                 bool hasChildren;
                 trie_node *parent;
+                //deletion if branch is empty
                 while (!doLoop) {
                     hasChildren = false;
                     int index = int(currentNodePointer->payload);
@@ -218,10 +220,46 @@ trie::const_iterator::const_iterator(const trie_node *node) {
 }
 
 trie::const_iterator &trie::const_iterator::operator++() {
-
+    bool goDown = true;
+    bool goUp = false;
+    while (goDown) {
+        goDown = true;
+        bool hasChildren = false;
+        for (auto child: current_node->children) {
+            if (child != nullptr) {
+                current_node = child;
+                hasChildren = true;
+                if (current_node->is_terminal) {
+                    goDown = false;
+                    goUp = false;
+                }
+                break;
+            }
+        }
+        if (!hasChildren) {
+            goUp = true;
+        }
+        while (goUp) {
+            for (int i = int(current_node->payload); i++ < 127;) {
+                auto child = current_node->parent->children[i];
+                if (child != nullptr) {
+                    current_node = current_node->parent->children[i];
+                    if (current_node->is_terminal) {
+                        goDown = false;
+                    }
+                    goUp = false;
+                    break;
+                }
+            }
+            if(goUp){
+                current_node = current_node->parent;
+            }
+        }
+    }
 }
 
 trie::const_iterator trie::const_iterator::operator++(int) {
+
 }
 
 trie::const_iterator::reference trie::const_iterator::operator*() const {
@@ -230,7 +268,7 @@ trie::const_iterator::reference trie::const_iterator::operator*() const {
     string ret;
     while (tmpNode->parent != nullptr) {
         ret.insert(ret.begin(), tmpNode->payload);
-        tmpNode= tmpNode->parent;
+        tmpNode = tmpNode->parent;
     }
     return ret;
 }
