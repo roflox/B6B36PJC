@@ -9,11 +9,8 @@ namespace exprs {
         friend class expr;
 
     public:
-        explicit variable(std::string var);
+        explicit variable(std::string);
 
-    private:
-        std::string var;
-    public:
         double evaluate(const variable_map_t &variables) const override;
 
         expr derive(const std::string &variable) const override;
@@ -24,6 +21,10 @@ namespace exprs {
         void write(std::ostream &out, WriteFormat fmt) const override;
 
         bool equals(const expr_base &b) const override;
+
+    private:
+        std::string var;
+
     };
 
     class number : public expr_base {
@@ -34,7 +35,7 @@ namespace exprs {
 
         double evaluate(const variable_map_t &variables) const override;
 
-        expr derive(std::string const &variable) const override;
+        expr derive(const std::string &variable) const override;
 
         expr simplify() const override;
 
@@ -43,6 +44,7 @@ namespace exprs {
 
         bool equals(const expr_base &b) const override;
 
+    private:
         double num;
     };
 
@@ -55,17 +57,18 @@ namespace exprs {
 
         double evaluate(const variable_map_t &variables) const override;
 
-        expr derive(std::string const &variable) const override;
+        expr derive(const std::string &variable) const override;
 
         expr simplify() const override;
 
     private:
-        expr a;
-        expr b;
-
         void write(std::ostream &out, WriteFormat fmt) const override;
 
         bool equals(const expr_base &b) const override;
+
+    private:
+        expr a;
+        expr b;
     };
 
     class minus : public expr_base {
@@ -79,29 +82,20 @@ namespace exprs {
         expr simplify() const override;
 
     private:
-        expr a;
-        expr b;
-
         void write(std::ostream &out, WriteFormat fmt) const override;
 
         bool equals(const expr_base &b) const override;
-    };
-
-    class multiply : public expr_base {
-
-    private:
-    public:
-        multiply(expr, expr);
 
     private:
         expr a;
         expr b;
     };
 
-    class divide : public expr_base {
+    class mult : public expr_base {
 
+    private:
     public:
-        divide(expr a, expr b);
+        mult(expr, expr);
 
         double evaluate(const variable_map_t &variables) const override;
 
@@ -118,4 +112,105 @@ namespace exprs {
         expr a;
         expr b;
     };
+
+    class div : public expr_base {
+
+    public:
+        div(expr, expr);
+
+        double evaluate(const variable_map_t &variables) const override;
+
+        expr derive(const std::string &variable) const override;
+
+        expr simplify() const override;
+
+    private:
+        void write(std::ostream &out, WriteFormat fmt) const override;
+
+        bool equals(const expr_base &b) const override;
+
+    private:
+        expr a;
+        expr b;
+    };
+
+    class sin : public expr_base {
+    public:
+        sin(expr);
+
+        double evaluate(const variable_map_t &variables) const override;
+
+        expr derive(const std::string &variable) const override;
+
+        expr simplify() const override;
+
+    private:
+        void write(std::ostream &out, WriteFormat fmt) const override;
+
+        bool equals(const expr_base &b) const override;
+
+    private:
+        expr a;
+    };
+
+    class cos : public expr_base {
+    public:
+        cos(expr a);
+
+        double evaluate(const variable_map_t &variables) const override;
+
+        expr derive(const std::string &variable) const override;
+
+        expr simplify() const override;
+
+    private:
+        void write(std::ostream &out, WriteFormat fmt) const override;
+
+        bool equals(const expr_base &b) const override;
+
+    private:
+
+    private:
+        expr a;
+    };
+
+    class log : public expr_base {
+    public:
+        log(expr);
+
+        double evaluate(const variable_map_t &variables) const override;
+
+        expr derive(const std::string &variable) const override;
+
+        expr simplify() const override;
+
+    private:
+        void write(std::ostream &out, WriteFormat fmt) const override;
+
+        bool equals(const expr_base &b) const override;
+
+    private:
+        expr a;
+    };
+
+    class pow : public expr_base {
+    public:
+        pow(expr, expr);
+
+        double evaluate(const variable_map_t &variables) const override;
+
+        expr derive(const std::string &variable) const override;
+
+        expr simplify() const override;
+
+    private:
+        void write(std::ostream &out, WriteFormat fmt) const override;
+
+        bool equals(const expr_base &b) const override;
+
+    private:
+        expr a;
+        expr b;
+    };
+
 }

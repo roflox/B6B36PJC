@@ -8,48 +8,58 @@
 namespace exprs {
     // TODO
 
+    number::number(double number) : num(number) {}
 
-    plus::plus(expr a, expr b) : a(std::move(a)), b(std::move(b)) {};
-    minus::minus(expr a, expr b) : a(std::move(a)), b(std::move(b)) {};
-    divide::divide(expr a, expr b) : a(std::move(a)), b(std::move(b)) {}
-    multiply::multiply(expr a, expr b) : a(std::move(a)), b(std::move(b)) {}
+    variable::variable(std::string a) : var(std::move(a)) {}
 
-    double plus::evaluate(const expr_base::variable_map_t &variables) const {
-        return 0;
+    plus::plus(expr a, expr b) : a(std::move(a)), b(std::move(b)) {}
+
+    minus::minus(expr a, expr b) : a(std::move(a)), b(std::move(b)) {}
+
+    mult::mult(expr a, expr b) : a(std::move(a)), b(std::move(b)) {}
+
+    div::div(expr a, expr b) : a(std::move(a)), b(std::move(b)) {}
+
+    sin::sin(expr a) : a(std::move(a)) {}
+
+    cos::cos(expr a) : a(std::move(a)) {}
+
+    log::log(expr a) : a(std::move(a)) {}
+
+    pow::pow(expr a, expr b) : a(std::move(a)), b(std::move(b)) {}
+
+    double number::evaluate(const expr_base::variable_map_t &variables) const {
+        return num;
     }
 
-    expr plus::derive(const std::string &variable) const {
+    expr number::derive(const std::string &variable) const {
+        return expr::ZERO;
+    }
+
+    expr number::simplify() const {
         return expr();
     }
 
-    expr plus::simplify() const {
-        return expr();
+    void number::write(std::ostream &out, expr_base::WriteFormat fmt) const {
+        out << num;
     }
 
-    void plus::write(std::ostream &out, expr_base::WriteFormat fmt) const {
-
-    }
-
-    bool plus::equals(const expr_base &b) const {
+    bool number::equals(const expr_base &b) const {
         return false;
     }
 
-
-
-    number::number(double num) {
-
-    }
-
-    variable::variable(std::string var) {
-
-    }
-
     double variable::evaluate(const expr_base::variable_map_t &variables) const {
-        return 0;
+        if (variables.find(var) != variables.end()) {
+            //todo variable does not exist
+            return 0;
+        }
+        return variables.at(var);
     }
 
     expr variable::derive(const std::string &variable) const {
-        return expr();
+        if (variable == var)
+            return expr::ONE;
+        return expr::ZERO;
     }
 
     expr variable::simplify() const {
@@ -57,19 +67,49 @@ namespace exprs {
     }
 
     void variable::write(std::ostream &out, expr_base::WriteFormat fmt) const {
-
+        out << var;
     }
 
     bool variable::equals(const expr_base &b) const {
         return false;
     }
 
-    double minus::evaluate(const expr_base::variable_map_t &variables) const {
-        return 0;
+    double plus::evaluate(const expr_base::variable_map_t &variables) const {
+        return a->evaluate(variables) + b->evaluate(variables);
     }
 
-    expr minus::derive(const std::string &variable) const {
+    expr plus::derive(const std::string &variable) const {
+        return a->derive(variable) + b->derive(variable);
+    }
+
+    expr plus::simplify() const {
         return expr();
+    }
+
+    void plus::write(std::ostream &out, expr_base::WriteFormat fmt) const {
+        switch (fmt) {
+            case expr_base::WriteFormat::Postfix:
+                out << fmt_expr{a, fmt} << " " << fmt_expr{b, fmt} << " +";
+                return;
+            case expr_base::WriteFormat::Infix:
+                out << "(" << fmt_expr{a, fmt} << " + " << fmt_expr{b, fmt} << ")";
+                return;
+            default:
+                out << "(+ " << fmt_expr{a, fmt} << " " << fmt_expr{b, fmt} << ")";
+                return;
+        }
+    }
+
+    bool plus::equals(const expr_base &b) const {
+        return false;
+    }
+
+    double minus::evaluate(const expr_base::variable_map_t &variables) const {
+        return a->evaluate(variables) - b->evaluate(variables);
+    }
+
+    expr minus::derive(const std::string &variables) const {
+        return a->derive(variables) - b->derive(variables);
     }
 
     expr minus::simplify() const {
@@ -77,36 +117,201 @@ namespace exprs {
     }
 
     void minus::write(std::ostream &out, expr_base::WriteFormat fmt) const {
-
+        switch (fmt) {
+            case expr_base::WriteFormat::Postfix:
+                out << fmt_expr{a, fmt} << " " << fmt_expr{b, fmt} << " -";
+                return;
+            case expr_base::WriteFormat::Infix:
+                out << "(" << fmt_expr{a, fmt} << " - " << fmt_expr{b, fmt} << ")";
+                return;
+            default:
+                out << "(- " << fmt_expr{a, fmt} << " " << fmt_expr{b, fmt} << ")";
+                return;
+        }
     }
 
     bool minus::equals(const expr_base &b) const {
         return false;
     }
 
-    minus::minus() {
-
+    double mult::evaluate(const expr_base::variable_map_t &variables) const {
+        return a->evaluate(variables) * b->evaluate(variables);
     }
 
-    double divide::evaluate(const expr_base::variable_map_t &variables) const {
-        return 0;
+    expr mult::derive(const std::string &variable) const {
+        return a->derive(variable) * b + b->derive(variable) * a;
     }
 
-    expr divide::derive(const std::string &variable) const {
+    expr mult::simplify() const {
         return expr();
     }
 
-    expr divide::simplify() const {
-        return expr();
+    void mult::write(std::ostream &out, expr_base::WriteFormat fmt) const {
+        switch (fmt) {
+            case expr_base::WriteFormat::Postfix:
+                out << fmt_expr{a, fmt} << " " << fmt_expr{b, fmt} << " *";
+                return;
+            case expr_base::WriteFormat::Infix:
+                out << "(" << fmt_expr{a, fmt} << " * " << fmt_expr{b, fmt} << ")";
+                return;
+            default:
+                out << "(* " << fmt_expr{a, fmt} << " " << fmt_expr{b, fmt} << ")";
+                return;
+        }
     }
 
-    void divide::write(std::ostream &out, expr_base::WriteFormat fmt) const {
-
-    }
-
-    bool divide::equals(const expr_base &b) const {
+    bool mult::equals(const expr_base &b) const {
         return false;
     }
 
+    double div::evaluate(const expr_base::variable_map_t &variables) const {
+        return a->evaluate(variables) / b->evaluate(variables);
+    }
+
+    expr div::derive(const std::string &variable) const {
+        return (a->derive(variable) * b - b->derive(variable) * a) / std::pow(b, 2);
+    }
+
+    expr div::simplify() const {
+        return expr();
+    }
+
+    void div::write(std::ostream &out, expr_base::WriteFormat fmt) const {
+        switch (fmt) {
+            case expr_base::WriteFormat::Postfix:
+                out << fmt_expr{a, fmt} << " " << fmt_expr{b, fmt} << " /";
+                return;
+            case expr_base::WriteFormat::Infix:
+                out << "(" << fmt_expr{a, fmt} << " / " << fmt_expr{b, fmt} << ")";
+                return;
+            default:
+                out << "(/ " << fmt_expr{a, fmt} << " " << fmt_expr{b, fmt} << ")";
+                return;
+        }
+    }
+
+    bool div::equals(const expr_base &b) const {
+        return false;
+    }
+
+    double sin::evaluate(const expr_base::variable_map_t &variables) const {
+        return std::sin(a->evaluate(variables));
+    }
+
+    expr sin::derive(const std::string &variable) const {
+        return std::cos(a) * a->derive(variable);
+    }
+
+    expr sin::simplify() const {
+        return expr();
+    }
+
+    void sin::write(std::ostream &out, expr_base::WriteFormat fmt) const {
+        switch (fmt) {
+            case expr_base::WriteFormat::Postfix:
+                out << "sin(" << fmt_expr{a, fmt} << ")";
+                return;
+            case expr_base::WriteFormat::Infix:
+                out << fmt_expr{a, fmt} << " sin";
+                return;
+            default:
+                out << "(sin " << fmt_expr{a, fmt} << ")";
+                return;
+        }
+    }
+
+    bool sin::equals(const expr_base &b) const {
+        return false;
+    }
+
+    double cos::evaluate(const expr_base::variable_map_t &variables) const {
+        return std::cos(a->evaluate(variables));
+    }
+
+    expr cos::derive(const std::string &variable) const {
+        return (expr::number(0) - std::sin(a)) * a->derive(variable);
+    }
+
+    expr cos::simplify() const {
+        return expr();
+    }
+
+    void cos::write(std::ostream &out, expr_base::WriteFormat fmt) const {
+        switch (fmt) {
+            case expr_base::WriteFormat::Postfix:
+                out << "cos(" << fmt_expr{a, fmt} << ")";
+                return;
+            case expr_base::WriteFormat::Infix:
+                out << fmt_expr{a, fmt} << " cos";
+                return;
+            default:
+                out << "(cos " << fmt_expr{a, fmt} << ")";
+                return;
+        }
+    }
+
+    bool cos::equals(const expr_base &b) const {
+        return false;
+    }
+
+    double log::evaluate(const expr_base::variable_map_t &variables) const {
+        return std::log(a->evaluate(variables));
+    }
+
+    expr log::derive(const std::string &variable) const {
+        return expr();
+    }
+
+    expr log::simplify() const {
+        return expr();
+    }
+
+    void log::write(std::ostream &out, expr_base::WriteFormat fmt) const {
+        switch (fmt) {
+            case expr_base::WriteFormat::Postfix:
+                out << "log(" << fmt_expr{a, fmt} << ")";
+                return;
+            case expr_base::WriteFormat::Infix:
+                out << fmt_expr{a, fmt} << " log";
+                return;
+            default:
+                out << "(log " << fmt_expr{a, fmt} << ")";
+                return;
+        }
+    }
+
+    bool log::equals(const expr_base &b) const {
+        return false;
+    }
+
+    double pow::evaluate(const expr_base::variable_map_t &variables) const {
+        return std::pow(a->evaluate(variables), b->evaluate(variables));
+    }
+
+    expr pow::derive(const std::string &variable) const {
+        return expr();
+    }
+
+    expr pow::simplify() const {
+        return expr();
+    }
+
+    void pow::write(std::ostream &out, expr_base::WriteFormat fmt) const {
+        switch (fmt) {
+            case expr_base::WriteFormat::Postfix:
+                out << "(" << fmt_expr{a, fmt} << " ^ " << fmt_expr{b, fmt} << ")";
+                return;
+            case expr_base::WriteFormat::Infix:
+                out << fmt_expr{a, fmt} << " " << fmt_expr{b, fmt} << " ^";
+                return;
+            default:
+                out << "(^ " << fmt_expr{a, fmt} << " " << fmt_expr{b, fmt} << ")";
+                return;
+        }
+    }
+
+    bool pow::equals(const expr_base &b) const {
+        return false;
+    }
 
 } // namespace exprs
