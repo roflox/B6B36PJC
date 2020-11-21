@@ -169,7 +169,7 @@ namespace exprs {
     }
 
     expr div::derive(const std::string &variable) const {
-        return (a->derive(variable) * b - b->derive(variable) * a) / std::pow(b, 2);
+        return (a->derive(variable) * b - b->derive(variable) * a) /(b*b);
     }
 
     expr div::simplify() const {
@@ -229,7 +229,7 @@ namespace exprs {
     }
 
     expr cos::derive(const std::string &variable) const {
-        return (expr::number(0) - std::sin(a)) * a->derive(variable);
+        return (expr::number(-1) * std::sin(a)) * a->derive(variable);
     }
 
     expr cos::simplify() const {
@@ -259,7 +259,7 @@ namespace exprs {
     }
 
     expr log::derive(const std::string &variable) const {
-        return expr();
+        return a->derive(variable) / a;
     }
 
     expr log::simplify() const {
