@@ -118,6 +118,7 @@ TEST_CASE("Parsing and writing", "[parse_write][valid]") {
         { "sin(x)",           "(sin x)" },
         { "cos(x)",           "(cos x)" },
         { "log(x)",           "(log x)" },
+        { "x+1",           "(+ x 1)" },
         { "1+1",              "(+ 1 1)" },
         { "1-1",              "(- 1 1)" },
         { "1*1",              "(* 1 1)" },

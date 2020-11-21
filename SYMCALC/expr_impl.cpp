@@ -37,7 +37,7 @@ namespace exprs {
     }
 
     expr number::simplify() const {
-        return expr();
+        return shared_from_this();
     }
 
     void number::write(std::ostream &out, expr_base::WriteFormat fmt) const {
@@ -63,7 +63,7 @@ namespace exprs {
     }
 
     expr variable::simplify() const {
-        return expr();
+        return shared_from_this();
     }
 
     void variable::write(std::ostream &out, expr_base::WriteFormat fmt) const {
@@ -83,7 +83,12 @@ namespace exprs {
     }
 
     expr plus::simplify() const {
-        return expr();
+        auto x = a->simplify();
+        auto y = b->simplify();
+        if (x == expr::ZERO)
+            return y;
+        if (y == expr::ZERO) return x;
+        return x + y;
     }
 
     void plus::write(std::ostream &out, expr_base::WriteFormat fmt) const {
@@ -113,7 +118,12 @@ namespace exprs {
     }
 
     expr minus::simplify() const {
-        return expr();
+        auto x = a->simplify();
+        auto y = b->simplify();
+        if (x == expr::ZERO)
+            return y;
+        if (y == expr::ZERO) return x;
+        return x - y;
     }
 
     void minus::write(std::ostream &out, expr_base::WriteFormat fmt) const {
@@ -139,11 +149,16 @@ namespace exprs {
     }
 
     expr mult::derive(const std::string &variable) const {
-        return a->derive(variable) * b + b->derive(variable) * a;
+        return a->derive(variable) * b + a * b->derive(variable);
     }
 
     expr mult::simplify() const {
-        return expr();
+        auto x = a->simplify();
+        auto y = b->simplify();
+        if (x == expr::ZERO || y == expr::ZERO) return expr::ZERO;
+        if (x == expr::ONE) return y;
+        if (y == expr::ONE) return x;
+        return x * y;
     }
 
     void mult::write(std::ostream &out, expr_base::WriteFormat fmt) const {
@@ -169,12 +184,18 @@ namespace exprs {
     }
 
     expr div::derive(const std::string &variable) const {
-        return (a->derive(variable) * b - b->derive(variable) * a) /(b*b);
+        return (a->derive(variable) * b - a * b->derive(variable) ) / (std::pow(b, expr::number(2)));
     }
 
     expr div::simplify() const {
-        return expr();
+        auto x = a->simplify();
+        auto y = b->simplify();
+        if (x == expr::ZERO || y == expr::ZERO) return shared_from_this();
+        if (x == expr::ZERO) return expr::ZERO;
+        if (y == expr::ONE) return x;
+        return x * y;
     }
+
 
     void div::write(std::ostream &out, expr_base::WriteFormat fmt) const {
         switch (fmt) {
@@ -203,7 +224,7 @@ namespace exprs {
     }
 
     expr sin::simplify() const {
-        return expr();
+        return std::sin(a->simplify());
     }
 
     void sin::write(std::ostream &out, expr_base::WriteFormat fmt) const {
@@ -233,7 +254,7 @@ namespace exprs {
     }
 
     expr cos::simplify() const {
-        return expr();
+        return std::cos(a->simplify());
     }
 
     void cos::write(std::ostream &out, expr_base::WriteFormat fmt) const {

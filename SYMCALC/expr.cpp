@@ -24,7 +24,6 @@ bool isFunction(const Token &t) {
 }
 
 bool isOperator(const Token &t) {
-
     return t.id == TokenId::Minus or t.id == TokenId::Plus or t.id == TokenId::Multiply or
            t.id == TokenId::Divide or
            t.id == TokenId::Power;
@@ -56,7 +55,11 @@ expr create_expression_tree(const std::string &expression) {
                 } else if (previousToken.id == TokenId::RParen) {
                     throw parse_error("missing operator after right parenthesis");
                 }
-                operatorStack.push(token);
+                if(!isFunction(token)){
+                    outputQueue.push_back(token);
+                }else{
+                    operatorStack.push(token);
+                }
                 break;
             case TokenId::Plus:
             case TokenId::Minus:
@@ -71,12 +74,13 @@ expr create_expression_tree(const std::string &expression) {
                         (operatorStack.top().op_precedence() > token.op_precedence() or
                          (operatorStack.top().op_precedence() == token.op_precedence() and
                           token.associativity() == Associativity::Left)) and
-                        operatorStack.top().id != TokenId::LParen) {
+                        operatorStack.top().id != TokenId::LParen)
+                    {
                         outputQueue.push_back(operatorStack.top());
                         operatorStack.pop();
-                    } else {
-                        break;
+                        continue;
                     }
+                    break;
                 }
                 operatorStack.push(token);
                 break;
@@ -151,7 +155,8 @@ expr create_expression_tree(const std::string &expression) {
 
         }
     }
-    return expressions.front();
+    auto res = expressions.front();
+    return res;
 }
 
 bool operator==(const expr &a, const expr &b) {
