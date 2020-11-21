@@ -111,8 +111,8 @@ TEST_CASE("Parsing and writing", "[parse_write][valid]") {
 
         // If you read & write numbers using iostreams with default settings,
         // this is what you get, but we don't test it.
-        // { "1.26e6",           "1.26e+06" },
-        // { "1.26e-6",          "1.26e-06" },
+         { "1.26e6",           "1.26e+06" },
+         { "1.26e-6",          "1.26e-06" },
 
         { "variable",         "variable" },
         { "sin(x)",           "(sin x)" },

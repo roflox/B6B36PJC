@@ -45,7 +45,9 @@ namespace exprs {
     }
 
     bool number::equals(const expr_base &b) const {
-        return false;
+        const number *a = dynamic_cast<number const *>(b.shared_from_this().get());
+        if (!a) return false;
+        return a->num == num;
     }
 
     double variable::evaluate(const expr_base::variable_map_t &variables) const {
@@ -71,7 +73,9 @@ namespace exprs {
     }
 
     bool variable::equals(const expr_base &b) const {
-        return false;
+        const variable *a = dynamic_cast<variable const *>(b.shared_from_this().get());
+        if (!a) return false;
+        return a->var == var;
     }
 
     double plus::evaluate(const expr_base::variable_map_t &variables) const {
@@ -105,8 +109,10 @@ namespace exprs {
         }
     }
 
-    bool plus::equals(const expr_base &b) const {
-        return false;
+    bool plus::equals(const expr_base &expr_b) const {
+        const plus *expr = dynamic_cast<plus const *>(expr_b.shared_from_this().get());
+        if (!expr) return false;
+        return expr->a == a && expr->b == b;
     }
 
     double minus::evaluate(const expr_base::variable_map_t &variables) const {
@@ -140,8 +146,10 @@ namespace exprs {
         }
     }
 
-    bool minus::equals(const expr_base &b) const {
-        return false;
+    bool minus::equals(const expr_base &expr_b) const {
+        const minus *expr = dynamic_cast<minus const *>(expr_b.shared_from_this().get());
+        if (!expr) return false;
+        return expr->a == a && expr->b == b;
     }
 
     double mult::evaluate(const expr_base::variable_map_t &variables) const {
@@ -175,8 +183,10 @@ namespace exprs {
         }
     }
 
-    bool mult::equals(const expr_base &b) const {
-        return false;
+    bool mult::equals(const expr_base &expr_b) const {
+        const mult *expr = dynamic_cast<mult const *>(expr_b.shared_from_this().get());
+        if (!expr) return false;
+        return expr->a == a && expr->b == b;
     }
 
     double div::evaluate(const expr_base::variable_map_t &variables) const {
@@ -184,16 +194,16 @@ namespace exprs {
     }
 
     expr div::derive(const std::string &variable) const {
-        return (a->derive(variable) * b - a * b->derive(variable) ) / (std::pow(b, expr::number(2)));
+        return (a->derive(variable) * b - a * b->derive(variable)) / (std::pow(b, expr::number(2)));
     }
 
     expr div::simplify() const {
         auto x = a->simplify();
         auto y = b->simplify();
-        if (x == expr::ZERO || y == expr::ZERO) return shared_from_this();
+        if (x == expr::ZERO and y == expr::ZERO) return shared_from_this();
         if (x == expr::ZERO) return expr::ZERO;
         if (y == expr::ONE) return x;
-        return x * y;
+        return x / y;
     }
 
 
@@ -211,8 +221,10 @@ namespace exprs {
         }
     }
 
-    bool div::equals(const expr_base &b) const {
-        return false;
+    bool div::equals(const expr_base &expr_b) const {
+        const div *expr = dynamic_cast<div const *>(expr_b.shared_from_this().get());
+        if (!expr) return false;
+        return expr->a == a && expr->b == b;
     }
 
     double sin::evaluate(const expr_base::variable_map_t &variables) const {
@@ -242,7 +254,9 @@ namespace exprs {
     }
 
     bool sin::equals(const expr_base &b) const {
-        return false;
+        const sin *expr = dynamic_cast<sin const *>(b.shared_from_this().get());
+        if (!expr) return false;
+        return expr->a == a;
     }
 
     double cos::evaluate(const expr_base::variable_map_t &variables) const {
@@ -272,7 +286,9 @@ namespace exprs {
     }
 
     bool cos::equals(const expr_base &b) const {
-        return false;
+        const cos *expr = dynamic_cast<cos const *>(b.shared_from_this().get());
+        if (!expr) return false;
+        return expr->a == a;
     }
 
     double log::evaluate(const expr_base::variable_map_t &variables) const {
@@ -284,7 +300,9 @@ namespace exprs {
     }
 
     expr log::simplify() const {
-        return expr();
+        expr result = a->simplify();
+        if (result == expr::ONE) return expr::ZERO;
+        return std::log(result);
     }
 
     void log::write(std::ostream &out, expr_base::WriteFormat fmt) const {
@@ -302,7 +320,9 @@ namespace exprs {
     }
 
     bool log::equals(const expr_base &b) const {
-        return false;
+        const log *expr = dynamic_cast<log const *>(b.shared_from_this().get());
+        if (!expr) return false;
+        return expr->a == a;
     }
 
     double pow::evaluate(const expr_base::variable_map_t &variables) const {
@@ -314,7 +334,12 @@ namespace exprs {
     }
 
     expr pow::simplify() const {
-        return expr();
+        auto x = a->simplify();
+        auto y = b->simplify();
+        if (y == expr::ONE) return x;
+        if ((x == expr::ZERO && y == expr::ZERO) || y == expr::ZERO) return expr::ONE;
+        if (x == expr::ZERO) return expr::ZERO;
+        return std::pow(x, y);
     }
 
     void pow::write(std::ostream &out, expr_base::WriteFormat fmt) const {
@@ -331,8 +356,10 @@ namespace exprs {
         }
     }
 
-    bool pow::equals(const expr_base &b) const {
-        return false;
+    bool pow::equals(const expr_base &expr_b) const {
+        const pow *expr = dynamic_cast<pow const *>(expr_b.shared_from_this().get());
+        if (!expr) return false;
+        return expr->a == a && expr->b == b;
     }
 
 } // namespace exprs
