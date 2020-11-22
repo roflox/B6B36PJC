@@ -326,10 +326,14 @@ namespace exprs {
         return std::pow(a->evaluate(variables), b->evaluate(variables));
     }
 
+    // vzorec dle testu
+    // (* (^ x 2) (+ (/ (* 1 2) x) (* (log x) 0)))
+    // (x^2)` = (x^2) * (2/x + log(x)*0)
+    // 0 = 2` -> b`
     expr pow::derive(const std::string &variable) const {
-        //todo vymyslet vzorec
-        throw std::logic_error("not implemented yet");
-        return expr();
+        return std::pow(a, b) * ((a->derive(variable) * b) / a + std::log(a) * b->derive(variable));
+//        throw std::logic_error("not implemented yet");
+//        return expr();
     }
 
     expr pow::simplify() const {
