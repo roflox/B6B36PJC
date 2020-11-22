@@ -23,13 +23,6 @@ bool isFunction(const Token &t) {
     else return t.identifier == "cos" or t.identifier == "sin" or t.identifier == "log";
 }
 
-bool isOperator(const Token &t) {
-    return t.id == TokenId::Minus or t.id == TokenId::Plus or t.id == TokenId::Multiply or
-           t.id == TokenId::Divide or
-           t.id == TokenId::Power;
-
-}
-
 expr create_expression_tree(const std::string &expression) {
     // TODO
     auto stringStream = std::stringstream(expression);
@@ -55,9 +48,9 @@ expr create_expression_tree(const std::string &expression) {
                 } else if (previousToken.id == TokenId::RParen) {
                     throw parse_error("missing operator after right parenthesis");
                 }
-                if(!isFunction(token)){
+                if (!isFunction(token)) {
                     outputQueue.push_back(token);
-                }else{
+                } else {
                     operatorStack.push(token);
                 }
                 break;
@@ -70,12 +63,12 @@ expr create_expression_tree(const std::string &expression) {
                     throw parse_error("missing left parenthesis after identifier");
                 }
                 while (!operatorStack.empty()) {
-                    if (isOperator(operatorStack.top()) and
-                        (operatorStack.top().op_precedence() > token.op_precedence() or
-                         (operatorStack.top().op_precedence() == token.op_precedence() and
-                          token.associativity() == Associativity::Left)) and
-                        operatorStack.top().id != TokenId::LParen)
-                    {
+                    auto top = operatorStack.top();
+                    if (isFunction(top) or top.is_binary_op() and (
+                            (top.op_precedence() > token.op_precedence() or
+                             (top.op_precedence() == token.op_precedence() and
+                              token.associativity() == Associativity::Left)) and
+                            top.id != TokenId::LParen)) {
                         outputQueue.push_back(operatorStack.top());
                         operatorStack.pop();
                         continue;
@@ -115,6 +108,7 @@ expr create_expression_tree(const std::string &expression) {
     }
 //    throw std::logic_error("not implemented");
     std::deque<expr> expressions;
+//    whi(const auto &token: outputQueue) {
     for (const auto &token: outputQueue) {
         if (token.id == TokenId::Number) {
             expressions.push_back(expr::number(token.number));
