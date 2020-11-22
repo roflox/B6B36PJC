@@ -4,9 +4,7 @@
 #include "sstream"
 #include "tokenizer.hpp"
 #include <memory>
-#include <utility>
 #include <deque>
-#include <vector>
 #include <stack>
 #include <iostream>
 
@@ -24,15 +22,14 @@ bool isFunction(const Token &t) {
 }
 
 expr create_expression_tree(const std::string &expression) {
-    // TODO
+    std::cout << expression << std::endl;
     auto stringStream = std::stringstream(expression);
     auto tokenizer = Tokenizer(stringStream);
-
     std::deque<Token> outputQueue;
     std::stack<Token> operatorStack;
     Token previousToken = Token(TokenId::End);
-    while (true) {
-        auto token = tokenizer.next();
+    auto token = tokenizer.next();
+    while (token.id != TokenId::End) {
         switch (token.id) {
             case TokenId::Number:
                 if (previousToken.id == TokenId::Number) {
@@ -64,11 +61,11 @@ expr create_expression_tree(const std::string &expression) {
                 }
                 while (!operatorStack.empty()) {
                     auto top = operatorStack.top();
-                    if (isFunction(top) or top.is_binary_op() and (
+                    if (isFunction(top) or (top.is_binary_op() and (
                             (top.op_precedence() > token.op_precedence() or
                              (top.op_precedence() == token.op_precedence() and
                               token.associativity() == Associativity::Left)) and
-                            top.id != TokenId::LParen)) {
+                            top.id != TokenId::LParen))) {
                         outputQueue.push_back(operatorStack.top());
                         operatorStack.pop();
                         continue;
@@ -85,9 +82,9 @@ expr create_expression_tree(const std::string &expression) {
                     if (operatorStack.top().id != TokenId::LParen) {
                         outputQueue.push_back(operatorStack.top());
                         operatorStack.pop();
-                    } else {
-                        break;
+                        continue;
                     }
+                    break;
                 }
                 if (!operatorStack.empty()) {
                     if (operatorStack.top().id == TokenId::LParen) {
@@ -95,12 +92,9 @@ expr create_expression_tree(const std::string &expression) {
                     }
                 }
                 break;
-            default:
-                break;
         }
-        if (token.id == TokenId::End)
-            break;
         previousToken = token;
+        token = tokenizer.next();
     }
     while (!operatorStack.empty()) {
         outputQueue.push_back(operatorStack.top());
@@ -109,24 +103,27 @@ expr create_expression_tree(const std::string &expression) {
 //    throw std::logic_error("not implemented");
     std::deque<expr> expressions;
 //    whi(const auto &token: outputQueue) {
-    for (const auto &token: outputQueue) {
-        if (token.id == TokenId::Number) {
-            expressions.push_back(expr::number(token.number));
-        } else if (TokenId::Identifier == token.id) {
-            if (isFunction(token)) {
+    for (const auto &queueToken: outputQueue) {
+        if (queueToken.id == TokenId::Number) {
+            expressions.push_back(expr::number(queueToken.number));
+        } else if (TokenId::Identifier == queueToken.id) {
+            if (isFunction(queueToken)) {
+                if (expression.empty()) {
+                    throw parse_error("function needs an argument");
+                }
                 auto a = expressions.back();
                 expressions.pop_back();
-                if (token.identifier == "sin") {
+                if (queueToken.identifier == "sin") {
                     expressions.push_back(sin(a));
-                } else if (token.identifier == "cos") {
+                } else if (queueToken.identifier == "cos") {
                     expressions.push_back(cos(a));
-                } else if (token.identifier == "log") {
+                } else if (queueToken.identifier == "log") {
                     expressions.push_back(log(a));
                 } else {
                     throw tokenize_error("unknown function");
                 }
             } else {
-                expressions.push_back(expr::variable(token.identifier));
+                expressions.push_back(expr::variable(queueToken.identifier));
             }
         } else {
             if (expressions.size() < 2)
@@ -135,15 +132,15 @@ expr create_expression_tree(const std::string &expression) {
             expressions.pop_back();
             auto a = expressions.back();
             expressions.pop_back();
-            if (token.id == TokenId::Plus) {
+            if (queueToken.id == TokenId::Plus) {
                 expressions.push_back(a + b);
-            } else if (token.id == TokenId::Minus) {
+            } else if (queueToken.id == TokenId::Minus) {
                 expressions.push_back(a - b);
-            } else if (token.id == TokenId::Multiply) {
+            } else if (queueToken.id == TokenId::Multiply) {
                 expressions.push_back(a * b);
-            } else if (token.id == TokenId::Divide) {
+            } else if (queueToken.id == TokenId::Divide) {
                 expressions.push_back(a / b);
-            } else if (token.id == TokenId::Power) {
+            } else if (queueToken.id == TokenId::Power) {
                 expressions.push_back(pow(a, b));
             }
 

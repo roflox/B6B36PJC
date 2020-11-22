@@ -2,11 +2,8 @@
 
 #include <iostream>
 #include <cmath>
-#include <limits>
-#include <utility>
 
 namespace exprs {
-    // TODO
 
     number::number(double number) : num(number) {}
 
@@ -264,7 +261,7 @@ namespace exprs {
     }
 
     expr cos::derive(const std::string &variable) const {
-        return (expr::number(-1) * std::sin(a)) * a->derive(variable);
+        return (expr::number(0) - std::sin(a)) * a->derive(variable);
     }
 
     expr cos::simplify() const {
@@ -330,6 +327,8 @@ namespace exprs {
     }
 
     expr pow::derive(const std::string &variable) const {
+        //todo vymyslet vzorec
+        throw std::logic_error("not implemented yet");
         return expr();
     }
 

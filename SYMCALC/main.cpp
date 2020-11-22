@@ -17,7 +17,7 @@ int main(int argc, char *argv[]) {
         try {
             handle_expr_line(std::cout, lajn, commands);
         } catch (const std::exception &e) {
-            std::cout << "nefunguje to kurva jedna" << std::endl;
+            std::cout << "nefunguje to " << std::endl;
         }
     }
 }
