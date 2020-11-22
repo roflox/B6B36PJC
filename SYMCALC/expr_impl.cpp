@@ -123,8 +123,6 @@ namespace exprs {
     expr minus::simplify() const {
         auto x = a->simplify();
         auto y = b->simplify();
-        if (x == expr::ZERO)
-            return y;
         if (y == expr::ZERO) return x;
         return x - y;
     }
@@ -238,10 +236,10 @@ namespace exprs {
 
     void sin::write(std::ostream &out, expr_base::WriteFormat fmt) const {
         switch (fmt) {
-            case expr_base::WriteFormat::Postfix:
+            case expr_base::WriteFormat::Infix:
                 out << "sin(" << fmt_expr{a, fmt} << ")";
                 return;
-            case expr_base::WriteFormat::Infix:
+            case expr_base::WriteFormat::Postfix:
                 out << fmt_expr{a, fmt} << " sin";
                 return;
             default:
@@ -270,10 +268,10 @@ namespace exprs {
 
     void cos::write(std::ostream &out, expr_base::WriteFormat fmt) const {
         switch (fmt) {
-            case expr_base::WriteFormat::Postfix:
+            case expr_base::WriteFormat::Infix:
                 out << "cos(" << fmt_expr{a, fmt} << ")";
                 return;
-            case expr_base::WriteFormat::Infix:
+            case expr_base::WriteFormat::Postfix:
                 out << fmt_expr{a, fmt} << " cos";
                 return;
             default:
@@ -304,10 +302,10 @@ namespace exprs {
 
     void log::write(std::ostream &out, expr_base::WriteFormat fmt) const {
         switch (fmt) {
-            case expr_base::WriteFormat::Postfix:
+            case expr_base::WriteFormat::Infix:
                 out << "log(" << fmt_expr{a, fmt} << ")";
                 return;
-            case expr_base::WriteFormat::Infix:
+            case expr_base::WriteFormat::Postfix:
                 out << fmt_expr{a, fmt} << " log";
                 return;
             default:
@@ -347,10 +345,10 @@ namespace exprs {
 
     void pow::write(std::ostream &out, expr_base::WriteFormat fmt) const {
         switch (fmt) {
-            case expr_base::WriteFormat::Postfix:
+            case expr_base::WriteFormat::Infix:
                 out << "(" << fmt_expr{a, fmt} << " ^ " << fmt_expr{b, fmt} << ")";
                 return;
-            case expr_base::WriteFormat::Infix:
+            case expr_base::WriteFormat::Postfix:
                 out << fmt_expr{a, fmt} << " " << fmt_expr{b, fmt} << " ^";
                 return;
             default:
