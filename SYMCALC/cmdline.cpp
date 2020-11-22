@@ -13,15 +13,14 @@ vector<string> split(string const &line, char delim) {
     size_t first = 0;
     size_t last;
     while ((last = line.find(delim, first)) != string::npos) {
-        res.push_back(line.substr(first, last-first));
-        first = last+1;
+        res.push_back(line.substr(first, last - first));
+        first = last + 1;
     }
     res.push_back(line.substr(first));
     return res;
 }
 
-double str_to_double(std::string const &str)
-{
+double str_to_double(std::string const &str) {
     std::size_t pos;
     double res = std::stod(str, &pos);
     if (pos != str.size())
@@ -40,7 +39,7 @@ Commands::Command parse_command(string const &str) {
     auto check_nargs = [&args](std::string name, unsigned count) {
         if (args.size() != count) {
             std::stringstream ss;
-            ss << name << " expects " << count << " arguments";
+            ss << name << " expectprints " << count << " arguments";
             throw std::runtime_error(ss.str());
         }
     };
@@ -51,21 +50,30 @@ Commands::Command parse_command(string const &str) {
     } else if (cmd == "evaluate") {
         expr::variable_map_t variables;
         for (const auto &assignment : args) {
-            auto eq = assignment.find('=');
+            auto eq = assignment.
+                    find('=');
             if (eq == string::npos)
                 throw std::runtime_error("bad variable assignment in evaluate");
             string key = assignment.substr(0, eq);
-            double value = str_to_double(assignment.substr(eq+1));
+            double value = str_to_double(assignment.substr(eq + 1));
             variables[key] = value;
         }
-        return Commands::Evaluate {std::move(variables)};
+        return Commands::Evaluate{std::move(variables)};
     } else if (cmd == "print") {
-        check_nargs("print", 0);
-        // TODO: bonus print
-        return Commands::Print {};
+        if (args.size() <= 1) {
+            auto format = args[0];
+            if (format == "infix") {
+                return Commands::Print{Commands::Print::Format::Infix};
+            } else if (format == "postfix") {
+                return Commands::Print{Commands::Print::Format::Postfix};
+            } else if (format == "prefix" or format == "print") {
+                return Commands::Print{};
+            }
+        }
+        throw parse_command("invalid print format");
     } else if (cmd == "simplify") {
         check_nargs("simplify", 0);
-        return Commands::Simplify {};
+        return Commands::Simplify{};
     } else {
         throw std::runtime_error("invalid command");
     }

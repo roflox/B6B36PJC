@@ -36,6 +36,8 @@ expr create_expression_tree(const std::string &expression) {
                     throw parse_error("missing operator between two numbers");
                 } else if (previousToken.id == TokenId::RParen) {
                     throw parse_error("missing operator between right parenthesis");
+                } else if (isFunction(previousToken)) {
+                    throw parse_error("missing left parenthesis after function " + previousToken.identifier);
                 }
                 outputQueue.push_back(token);
                 break;
@@ -75,9 +77,23 @@ expr create_expression_tree(const std::string &expression) {
                 operatorStack.push(token);
                 break;
             case TokenId::LParen:
+                if (previousToken.id == TokenId::Identifier) {
+                    if (!isFunction(previousToken)) {
+                        throw unknown_function_exception(
+                                "missing operator between identifier " + token.identifier + " and left parenthesis");
+                    }
+                } else if (previousToken.id == TokenId::Number) {
+                    throw parse_error("missing operator between number " + std::to_string(token.number) +
+                                      " and left parenthesis");
+                }
                 operatorStack.push(token);
                 break;
             case TokenId::RParen:
+                if (isFunction(previousToken)) {
+                    throw parse_error("missing left parentheses after function");
+                } else if (previousToken.id == TokenId::LParen) {
+                    throw parse_error("missing expression inside parentheses");
+                }
                 while (!operatorStack.empty()) {
                     if (operatorStack.top().id != TokenId::LParen) {
                         outputQueue.push_back(operatorStack.top());
@@ -90,11 +106,16 @@ expr create_expression_tree(const std::string &expression) {
                     if (operatorStack.top().id == TokenId::LParen) {
                         operatorStack.pop();
                     }
+                    break;
+                } else {
+                    throw parse_error("missing left parentheses");
                 }
-                break;
         }
         previousToken = token;
         token = tokenizer.next();
+    }
+    if (isFunction(previousToken)) {
+        throw unbound_variable_exception("unfinished function");
     }
     while (!operatorStack.empty()) {
         outputQueue.push_back(operatorStack.top());
@@ -103,7 +124,7 @@ expr create_expression_tree(const std::string &expression) {
 //    throw std::logic_error("not implemented");
     std::deque<expr> expressions;
 //    whi(const auto &token: outputQueue) {
-    for (const auto &queueToken: outputQueue) {
+    for (auto queueToken: outputQueue) {
         if (queueToken.id == TokenId::Number) {
             expressions.push_back(expr::number(queueToken.number));
         } else if (TokenId::Identifier == queueToken.id) {

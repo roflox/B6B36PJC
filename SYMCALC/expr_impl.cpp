@@ -48,9 +48,11 @@ namespace exprs {
     }
 
     double variable::evaluate(const expr_base::variable_map_t &variables) const {
-        if (variables.find(var) != variables.end()) {
-            //todo variable does not exist
-            return 0;
+        if(variables.empty()){
+            throw unbound_variable_exception("variable does not exist");
+        }
+        if (variables.find(var) == variables.end()) {
+            throw unbound_variable_exception("variable does not exist");
         }
         return variables.at(var);
     }
@@ -287,7 +289,11 @@ namespace exprs {
     }
 
     double log::evaluate(const expr_base::variable_map_t &variables) const {
-        return std::log(a->evaluate(variables));
+        auto innerExpression = a->evaluate(variables);
+        if (innerExpression <= 0) {
+            throw domain_exception("log can be used only on positive numbers");
+        }
+        return std::log(innerExpression);
     }
 
     expr log::derive(const std::string &variable) const {
