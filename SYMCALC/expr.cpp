@@ -61,6 +61,9 @@ expr create_expression_tree(const std::string &expression) {
                 if (isFunction(previousToken)) {
                     throw parse_error("missing left parenthesis after identifier");
                 }
+                if (previousToken.id==TokenId::LParen){
+                    throw parse_error("missing expression before operator");
+                }
                 while (!operatorStack.empty()) {
                     auto top = operatorStack.top();
                     if (isFunction(top) or (top.is_binary_op() and (
@@ -147,8 +150,22 @@ expr create_expression_tree(const std::string &expression) {
                 expressions.push_back(expr::variable(queueToken.identifier));
             }
         } else {
-            if (expressions.size() < 2)
-                throw parse_error("operator need at least two expressions");
+            if (expressions.size() < 2) {
+                std::string opera;
+                if (queueToken.id == TokenId::Plus) {
+                    opera = "+";
+                } else if (queueToken.id == TokenId::Minus) {
+                    opera = "-";
+                } else if (queueToken.id == TokenId::Multiply) {
+                    opera = "*";
+                } else if (queueToken.id == TokenId::Divide) {
+                    opera = "/";
+                } else if (queueToken.id == TokenId::Power) {
+                    opera = "^";
+                }
+                throw parse_error(std::string(opera).append(
+                        " requires at least two expressions, error parsing expression ").append(expression));
+            }
             auto b = expressions.back();
             expressions.pop_back();
             auto a = expressions.back();

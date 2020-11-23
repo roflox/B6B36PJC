@@ -70,7 +70,7 @@ Commands::Command parse_command(string const &str) {
                 return Commands::Print{};
             }
         }
-        throw parse_command("invalid print format");
+        throw std::runtime_error("invalid print format");
     } else if (cmd == "simplify") {
         check_nargs("simplify", 0);
         return Commands::Simplify{};

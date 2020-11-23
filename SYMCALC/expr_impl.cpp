@@ -48,7 +48,7 @@ namespace exprs {
     }
 
     double variable::evaluate(const expr_base::variable_map_t &variables) const {
-        if(variables.empty()){
+        if (variables.empty()) {
             throw unbound_variable_exception("variable does not exist");
         }
         if (variables.find(var) == variables.end()) {
@@ -102,7 +102,7 @@ namespace exprs {
             case expr_base::WriteFormat::Infix:
                 out << "(" << fmt_expr{a, fmt} << " + " << fmt_expr{b, fmt} << ")";
                 return;
-            default:
+            case expr_base::WriteFormat::Prefix:
                 out << "(+ " << fmt_expr{a, fmt} << " " << fmt_expr{b, fmt} << ")";
                 return;
         }
