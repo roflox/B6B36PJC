@@ -22,7 +22,7 @@ bool isFunction(const Token &t) {
 }
 
 expr create_expression_tree(const std::string &expression) {
-    std::cout << expression << std::endl;
+//    std::cout << expression << std::endl;
     auto stringStream = std::stringstream(expression);
     auto tokenizer = Tokenizer(stringStream);
     std::deque<Token> outputQueue;

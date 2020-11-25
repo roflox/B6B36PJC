@@ -1,7 +1,9 @@
 #ifdef RUNNER
 # include "runner.hpp"
 #else
+
 # include "expr.hpp"
+
 #endif
 
 #include "tests.hpp"
@@ -59,35 +61,42 @@ namespace {
     }
 #else
 # define CHECK_THROWS_MAYBEAS(expr, exc_type) CHECK_THROWS_AS(expr, exc_type)
+
     std::string to_string(expr e) {
         std::stringstream ss;
         ss << e;
         return ss.str();
     }
+
     std::string parse_and_write(std::string input) {
         expr e = create_expression_tree(input);
         return to_string(e);
     }
+
     std::string test_simplify(std::string input) {
         expr e = create_expression_tree(input);
         e = e->simplify();
         return to_string(e);
     }
+
     std::string test_derive(std::string input, const char *var) {
         expr e = create_expression_tree(input);
         e = e->derive(var);
         return to_string(e);
     }
+
     std::string test_derive_simplify(std::string input, const char *var) {
         expr e = create_expression_tree(input);
         e = e->derive(var);
         e = e->simplify();
         return to_string(e);
     }
+
     double test_evaluate(std::string input, expr::variable_map_t const &vm) {
         expr e = create_expression_tree(input);
         return e->evaluate(vm);
     }
+
 #endif
 }
 
@@ -106,45 +115,45 @@ struct TestEvaluateData {
 
 TEST_CASE("Parsing and writing", "[parse_write][valid]") {
     static const TestData s_test_data[] = {
-            { "1",                "1" },
-            { "12.34",            "12.34" },
+            {"1",                "1"},
+            {"12.34",            "12.34"},
 
             // If you read & write numbers using iostreams with default settings,
             // this is what you get, but we don't test it.
             // { "1.26e6",           "1.26e+06" },
             // { "1.26e-6",          "1.26e-06" },
 
-            { "variable",         "variable" },
-            { "sin(x)",           "(sin x)" },
-            { "cos(x)",           "(cos x)" },
-            { "log(x)",           "(log x)" },
-            { "1+1",              "(+ 1 1)" },
-            { "1-1",              "(- 1 1)" },
-            { "1*1",              "(* 1 1)" },
-            { "1/1",              "(/ 1 1)" },
-            { "1^1",              "(^ 1 1)" },
+            {"variable",         "variable"},
+            {"sin(x)",           "(sin x)"},
+            {"cos(x)",           "(cos x)"},
+            {"log(x)",           "(log x)"},
+            {"1+1",              "(+ 1 1)"},
+            {"1-1",              "(- 1 1)"},
+            {"1*1",              "(* 1 1)"},
+            {"1/1",              "(/ 1 1)"},
+            {"1^1",              "(^ 1 1)"},
 
             // should matter only for evaluate, not here
-            { "log(0)",           "(log 0)" },
+            {"log(0)",           "(log 0)"},
 
             // whitespace
-            { "sin ( x ) ",       "(sin x)" },
-            { " 1   \t + 1  ",    "(+ 1 1)" },
+            {"sin ( x ) ",       "(sin x)"},
+            {" 1   \t + 1  ",    "(+ 1 1)"},
 
             // brackets
-            { "(1)", "1" },
-            { "(1+(((sin(x)))))", "(+ 1 (sin x))" },
+            {"(1)",              "1"},
+            {"(1+(((sin(x)))))", "(+ 1 (sin x))"},
 
             // precedence
-            { "1+2*3",            "(+ 1 (* 2 3))" },
-            { "1+2*3*4",          "(+ 1 (* (* 2 3) 4))" },
-            { "1*2^3",            "(* 1 (^ 2 3))" },
-            { "1*2^3^4",          "(* 1 (^ 2 (^ 3 4)))" },
+            {"1+2*3",            "(+ 1 (* 2 3))"},
+            {"1+2*3*4",          "(+ 1 (* (* 2 3) 4))"},
+            {"1*2^3",            "(* 1 (^ 2 3))"},
+            {"1*2^3^4",          "(* 1 (^ 2 (^ 3 4)))"},
 
-            { "(1+2)*3*4",        "(* (* (+ 1 2) 3) 4)" },
-            { "(1*2)^3^4",        "(^ (* 1 2) (^ 3 4))" },
+            {"(1+2)*3*4",        "(* (* (+ 1 2) 3) 4)"},
+            {"(1*2)^3^4",        "(^ (* 1 2) (^ 3 4))"},
 
-            { "2^sin(1+1)",       "(^ 2 (sin (+ 1 1)))" },
+            {"2^sin(1+1)",       "(^ 2 (sin (+ 1 1)))"},
     };
     for (const auto &test : s_test_data) {
         SECTION(test.input) {
@@ -157,55 +166,55 @@ TEST_CASE("Parsing and writing", "[parse_write][valid]") {
 TEST_CASE("Simplify", "[simplify][valid]") {
     static const TestData s_test_data[] = {
             // rules
-            { "0+x",           "x" },
-            { "x+0",           "x" },
-            { "x-0",           "x" },
-            { "0*x",           "0" },
-            { "x*0",           "0" },
-            { "1*x",           "x" },
-            { "x*1",           "x" },
-            { "0/0",           "(/ 0 0)" },
-            { "0/x",           "0" },
-            { "x/1",           "x" },
-            { "x^1",           "x" },
-            { "0^0",           "1" },
-            { "x^0",           "1" },
-            { "0^x",           "0" },
-            { "log(1)",        "0" },
+            {"0+x",           "x"},
+            {"x+0",           "x"},
+            {"x-0",           "x"},
+            {"0*x",           "0"},
+            {"x*0",           "0"},
+            {"1*x",           "x"},
+            {"x*1",           "x"},
+            {"0/0",           "(/ 0 0)"},
+            {"0/x",           "0"},
+            {"x/1",           "x"},
+            {"x^1",           "x"},
+            {"0^0",           "1"},
+            {"x^0",           "1"},
+            {"0^x",           "0"},
+            {"log(1)",        "0"},
 
             // depth
-            { "0*x + x*0",     "0" },
-            { "0*x - x*0",     "0" },
-            { "(0*x) * (x*0)", "0" },
-            { "(0*x) / (1+0)", "0" },
-            { "(0*x) ^ (x*0)", "1" },
-            { "log(1*1)",      "0" },
-            { "sin(1*1)",      "(sin 1)" },
-            { "cos(1*1)",      "(cos 1)" },
+            {"0*x + x*0",     "0"},
+            {"0*x - x*0",     "0"},
+            {"(0*x) * (x*0)", "0"},
+            {"(0*x) / (1+0)", "0"},
+            {"(0*x) ^ (x*0)", "1"},
+            {"log(1*1)",      "0"},
+            {"sin(1*1)",      "(sin 1)"},
+            {"cos(1*1)",      "(cos 1)"},
 
             // indempotence
-            { "42",            "42" },
-            { "xxx",           "xxx" },
-            { "1+x",           "(+ 1 x)" },
-            { "1-x",           "(- 1 x)" },
-            { "2*x",           "(* 2 x)" },
-            { "2/x",           "(/ 2 x)" },
-            { "2^x",           "(^ 2 x)" },
-            { "sin(1)",        "(sin 1)" },
-            { "cos(1)",        "(cos 1)" },
-            { "log(2)",        "(log 2)" },
+            {"42",            "42"},
+            {"xxx",           "xxx"},
+            {"1+x",           "(+ 1 x)"},
+            {"1-x",           "(- 1 x)"},
+            {"2*x",           "(* 2 x)"},
+            {"2/x",           "(/ 2 x)"},
+            {"2^x",           "(^ 2 x)"},
+            {"sin(1)",        "(sin 1)"},
+            {"cos(1)",        "(cos 1)"},
+            {"log(2)",        "(log 2)"},
 
-            { "2*x + x*2",     "(+ (* 2 x) (* x 2))" },
-            { "2*x - x*2",     "(- (* 2 x) (* x 2))" },
-            { "(2*x) * (x*2)", "(* (* 2 x) (* x 2))" },
-            { "(2*x) / (x*2)", "(/ (* 2 x) (* x 2))" },
-            { "(2*x) ^ (x*2)", "(^ (* 2 x) (* x 2))" },
+            {"2*x + x*2",     "(+ (* 2 x) (* x 2))"},
+            {"2*x - x*2",     "(- (* 2 x) (* x 2))"},
+            {"(2*x) * (x*2)", "(* (* 2 x) (* x 2))"},
+            {"(2*x) / (x*2)", "(/ (* 2 x) (* x 2))"},
+            {"(2*x) ^ (x*2)", "(^ (* 2 x) (* x 2))"},
 
-            { "2*1 + 2*1",     "(+ 2 2)" },
-            { "2*1 - 2*1",     "(- 2 2)" },
-            { "(2*1) * (2*1)", "(* 2 2)" },
-            { "(2*1) / (2*1)", "(/ 2 2)" },
-            { "(2*1) ^ (2*1)", "(^ 2 2)" },
+            {"2*1 + 2*1",     "(+ 2 2)"},
+            {"2*1 - 2*1",     "(- 2 2)"},
+            {"(2*1) * (2*1)", "(* 2 2)"},
+            {"(2*1) / (2*1)", "(/ 2 2)"},
+            {"(2*1) ^ (2*1)", "(^ 2 2)"},
     };
     for (const auto &test : s_test_data) {
         SECTION(test.input) {
@@ -218,19 +227,19 @@ TEST_CASE("Simplify", "[simplify][valid]") {
 TEST_CASE("Derive", "[derive][valid]") {
     static const TestDeriveData s_test_data[] = {
             // input, variable, expected
-            { "42",   "x",       "0" },
-            { "x",    "x",       "1" },
-            { "x",    "y",       "0" },
-            { "abra", "cadabra", "0" },
+            {"42",     "x",       "0"},
+            {"x",      "x",       "1"},
+            {"x",      "y",       "0"},
+            {"abra",   "cadabra", "0"},
 
-            { "x+1",    "x", "(+ 1 0)" },
-            { "x-1",    "x", "(- 1 0)" },
-            { "x*2",    "x", "(+ (* 1 2) (* x 0))" },
-            { "x/2",    "x", "(/ (- (* 1 2) (* x 0)) (^ 2 2))" },
-            { "x^2",    "x", "(* (^ x 2) (+ (/ (* 1 2) x) (* (log x) 0)))" },
-            { "sin(x)", "x", "(* (cos x) 1)" },
-            { "cos(x)", "x", "(* (- 0 (sin x)) 1)" },
-            { "log(x)", "x", "(/ 1 x)" },
+            {"x+1",    "x",       "(+ 1 0)"},
+            {"x-1",    "x",       "(- 1 0)"},
+            {"x*2",    "x",       "(+ (* 1 2) (* x 0))"},
+            {"x/2",    "x",       "(/ (- (* 1 2) (* x 0)) (^ 2 2))"},
+            {"x^2",    "x",       "(* (^ x 2) (+ (/ (* 1 2) x) (* (log x) 0)))"},
+            {"sin(x)", "x",       "(* (cos x) 1)"},
+            {"cos(x)", "x",       "(* (- 0 (sin x)) 1)"},
+            {"log(x)", "x",       "(/ 1 x)"},
     };
 
     for (const auto &test : s_test_data) {
@@ -247,20 +256,20 @@ TEST_CASE("Derive and simplify", "[simplify]") {
 
 TEST_CASE("Evaluate", "[evaluate][valid]") {
     static const TestEvaluateData s_test_data[] = {
-            { "x+x*var",    {{"x", 3}, {"var", 13}}, 3+3*13 },
-            { "x+x*var",    {{"x", 2}, {"var", 9}, {"asdasd", 42}}, 2+2*9 },
+            {"x+x*var",    {{"x", 3}, {"var", 13}},                3 + 3 * 13},
+            {"x+x*var",    {{"x", 2}, {"var", 9}, {"asdasd", 42}}, 2 + 2 * 9},
 
-            { "42",         {},          42 },
-            { "x",          {{"x", 38}}, 38 },
-            { "sin(x)",     {{"x", 0}},   0 },
-            { "cos(x)",     {{"x", 0}},   1 },
-            { "log(x)",     {{"x", 1}},   0 },
-            { "1+2",        {},           3 },
-            { "1-2",        {},          -1 },
-            { "2*3",        {},           6 },
-            { "3/2",        {},           1.5 },
-            { "3^2",        {},           9 },
-            { "25^(0-1/2)", {},           0.2 },
+            {"42",         {},                                     42},
+            {"x",          {{"x", 38}},                            38},
+            {"sin(x)",     {{"x", 0}},                             0},
+            {"cos(x)",     {{"x", 0}},                             1},
+            {"log(x)",     {{"x", 1}},                             0},
+            {"1+2",        {},                                     3},
+            {"1-2",        {},                                     -1},
+            {"2*3",        {},                                     6},
+            {"3/2",        {},                                     1.5},
+            {"3^2",        {},                                     9},
+            {"25^(0-1/2)", {},                                     0.2},
     };
 
     for (const auto &test : s_test_data) {
@@ -272,6 +281,7 @@ TEST_CASE("Evaluate", "[evaluate][valid]") {
 }
 
 #if !defined(RUNNER)
+
 TEST_CASE("Equals", "[equals]") {
     auto E = create_expression_tree;
 
@@ -315,14 +325,15 @@ TEST_CASE("Equals", "[equals]") {
                 E("1^2"),
                 E("2^1"),
         };
-        for (size_t i=0; i<ARRAY_SIZE(exprs); ++i) {
+        for (size_t i = 0; i < ARRAY_SIZE(exprs); ++i) {
             CHECK(exprs[i] == exprs[i]);
-            for (size_t j=i+1; j<ARRAY_SIZE(exprs); ++j) {
+            for (size_t j = i + 1; j < ARRAY_SIZE(exprs); ++j) {
                 CHECK(exprs[i] != exprs[j]);
             }
         }
     }
 }
+
 #endif // !RUNNER
 
 
