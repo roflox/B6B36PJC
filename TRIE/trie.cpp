@@ -10,6 +10,7 @@
 trie_node *currentNodePointer;
 using namespace std;
 
+//420 line just for fun
 
 trie::trie(const std::vector<std::string> &strings) {
     for (const auto &word: strings) {
