@@ -2,5 +2,5 @@ Program is used for counting words between multiple files. You can use it to cou
 
 usage: WC [OPTION]...  [FILE]...  
 options:  
--h, --help            to print help manual  
--s, --separate-files  count words for each file separated
+-h, --help  to print help manual  
+-s, --separate-files   count words for each file separated
