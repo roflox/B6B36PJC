@@ -4,6 +4,8 @@ WC je program, který na vstupu přijme cestu k souboru/ům a spoučítá četno
 ## Implementace
 Program na vstupu přijme cestu k souboru. Otevře každý nalezený soubor a cyklicky prochází každý řádek a hledá mezery. V případě, že nalezne mezeru, ukončí načítání slova a odstraní za začátku a konce slova všechny nealfanumerické znaky. Slovo pak uloží do mapy jako klíč, případně zvýší počet nalezených slov pro daný klíč.
 
+## Manuál
+
 usage: WC [OPTION]...  [FILE]...  
 options:  
 -h, --help  to print help manual  
