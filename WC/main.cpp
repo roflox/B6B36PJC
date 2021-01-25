@@ -3,6 +3,7 @@
 #include <algorithm>
 #include <fstream>
 #include <map>
+#include <ctype.h>
 
 std::map<std::string, long> words_map;
 
@@ -30,6 +31,25 @@ void print_map() {
     }
 }
 
+
+std::string remove_special_chars(std::string *word) {
+    if (word->length() == 0) {
+        return *word;
+    }
+    const char first_char = (*word)[0];
+    const char last_char = (*word)[word->length() - 1];
+    if (isalnum(first_char) && isalnum(last_char)) {
+        return *word;
+    }
+    if (!isalnum(first_char)) {
+        word->erase(0, 1);
+    }
+    if (!isalnum(last_char)) {
+        word->pop_back();
+    }
+    return remove_special_chars(word);
+}
+
 void count_word_for_file(const std::string &file_name) {
     std::ifstream infile(file_name);
     if (infile.is_open()) {
@@ -40,12 +60,12 @@ void count_word_for_file(const std::string &file_name) {
             char *str = const_cast<char *>(line.c_str());
             int state = 0;
             while (*str) {
-                if (*str == ' ' || *str == '\n' || *str == '\t' || *str == '.' || *str == ',') {
+                if (*str == ' ' || *str == '\n' || *str == '\t') {
                     state = 0;
                 } else if (state == 0) {
                     state = 1;
-                    push_word_to_map(word);
-                    word = "";
+                    push_word_to_map(remove_special_chars(&word));
+                    word.clear();
 //                    ++count;
                 }
                 if (state != 0) {
@@ -53,8 +73,8 @@ void count_word_for_file(const std::string &file_name) {
                 }
                 ++str;
             }
-            push_word_to_map(word);
-            word = "";
+            push_word_to_map(remove_special_chars(&word));
+            word.clear();
         }
 //        std::cout << count << std::endl;
 //total number of words
